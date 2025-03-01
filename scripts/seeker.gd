@@ -37,25 +37,42 @@ func _physics_process(delta):
 	# Movement animation
 	var anim = $seeker_animation
 	var tag_anim = $tag_animation
-	if Input.is_action_pressed("left_key"):
+	if Input.is_action_pressed("down_key"):
+		anim.play("run_down")
+	elif Input.is_action_pressed("down_key") and Input.is_action_pressed("left_key"):
+		anim.play("run_down")
+	elif Input.is_action_pressed("down_key") and Input.is_action_pressed("right_key"):
+		anim.play("run_down")
+	elif Input.is_action_pressed("up_key"):
+		anim.play("run_up")
+	elif Input.is_action_pressed("up_key") and Input.is_action_pressed("left_key"):
+		anim.play("run_up")
+	elif Input.is_action_pressed("up_key") and Input.is_action_pressed("right_key"):
+		anim.play("run_up")
+	elif Input.is_action_pressed("left_key"):
 		anim.flip_h = true
-		anim.play("run")
+		anim.play("run_side")
 	elif Input.is_action_pressed("right_key"):
 		anim.flip_h = false
-		anim.play("run")
-	elif Input.is_action_pressed("up_key"):
-		anim.play("run")
-	elif Input.is_action_pressed("down_key"):
-		anim.play("run")
+		anim.play("run_side")
 	else:
-		anim.play("idle")
+		if last_movement_direction.y < 0:
+			anim.play("idle_up")
+		elif last_movement_direction.y > 0:
+			anim.play("idle_down")
+		elif last_movement_direction.x < 0:
+			anim.flip_h = true
+			anim.play("idle_side")
+		elif last_movement_direction.x > 0:
+			anim.flip_h = false
+			anim.play("idle_side")
 		
 	# Hide tag animation if not playing
 	if tag_anim.is_playing():
 		tag_anim.visible = true
 	else:
 		tag_anim.visible = false
-		
+	
 	# Movement
 	var input_direction = Vector2(
 		Input.get_action_strength("right_key") - Input.get_action_strength("left_key"),
