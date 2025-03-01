@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvv3bwvorqxme"]
+
+[ext_resource type="Texture2D" uid="uid://cfu87ayx3lxdx" path="res://assets/do-anyone-have-a-3d-model-of-shocked-black-guy-v0-cddhprntb3sa1.webp" id="1_m3mkh"]
+
+[node name="ui" type="CanvasLayer"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 15.0
+offset_top = 94.0
+offset_right = 341.0
+offset_bottom = 149.0
+theme_override_font_sizes/font_size = 40
+text = "BADING SI VINCE"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_left = 873.0
+offset_top = 501.0
+offset_right = 1257.0
+offset_bottom = 693.0
+texture = ExtResource("1_m3mkh")

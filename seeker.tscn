@@ -1,0 +1,87 @@
+[gd_scene load_steps=14 format=3 uid="uid://cmic438xapftt"]
+
+[ext_resource type="Script" path="res://scripts/seeker.gd" id="1_kfjqh"]
+[ext_resource type="Texture2D" uid="uid://bkc7l781sifcj" path="res://assets/Untitled-modified.png" id="2_q8txa"]
+[ext_resource type="Texture2D" uid="uid://dnmgl6xmeou5k" path="res://assets/0x72_DungeonTilesetII_v1.7/frames/elf_f_idle_anim_f0.png" id="3_y8k8j"]
+[ext_resource type="Texture2D" uid="uid://cv3pjk37s8wkq" path="res://assets/0x72_DungeonTilesetII_v1.7/frames/elf_f_idle_anim_f1.png" id="4_to2yt"]
+[ext_resource type="Texture2D" uid="uid://pvxjwrkt7wcq" path="res://assets/0x72_DungeonTilesetII_v1.7/frames/elf_f_idle_anim_f2.png" id="5_ujl2v"]
+[ext_resource type="Texture2D" uid="uid://kjeafe6v4j0m" path="res://assets/0x72_DungeonTilesetII_v1.7/frames/elf_f_idle_anim_f3.png" id="6_mcpe3"]
+[ext_resource type="Texture2D" uid="uid://cl4hynrfixxsy" path="res://assets/0x72_DungeonTilesetII_v1.7/frames/elf_f_run_anim_f0.png" id="7_q7u5c"]
+[ext_resource type="Texture2D" uid="uid://bamfj8jc0ss87" path="res://assets/0x72_DungeonTilesetII_v1.7/frames/elf_f_run_anim_f1.png" id="8_6uh5j"]
+[ext_resource type="Texture2D" uid="uid://b4aqwsoblgo4g" path="res://assets/0x72_DungeonTilesetII_v1.7/frames/elf_f_run_anim_f2.png" id="9_wrvvw"]
+[ext_resource type="Texture2D" uid="uid://dl48a7w5oxkn7" path="res://assets/0x72_DungeonTilesetII_v1.7/frames/elf_f_run_anim_f3.png" id="10_crkcl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bpooi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_q8txa")
+}],
+"loop": false,
+"name": &"tag",
+"speed": 10.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hoodn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_y8k8j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_to2yt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ujl2v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_mcpe3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_q7u5c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_6uh5j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_wrvvw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_crkcl")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ejbtt"]
+size = Vector2(9, 15)
+
+[node name="seeker" type="CharacterBody2D"]
+position = Vector2(0, -6)
+script = ExtResource("1_kfjqh")
+
+[node name="tag_animation" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, 9)
+sprite_frames = SubResource("SpriteFrames_bpooi")
+animation = &"tag"
+frame_progress = 1.0
+
+[node name="seeker_animation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hoodn")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 6.5)
+shape = SubResource("RectangleShape2D_ejbtt")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, 6)
+zoom = Vector2(3.5, 3.5)
+position_smoothing_enabled = true

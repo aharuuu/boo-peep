@@ -1,0 +1,136 @@
+[gd_scene load_steps=20 format=4 uid="uid://co66p4xbl3a4r"]
+
+[ext_resource type="Texture2D" uid="uid://bob6rf375sgje" path="res://Tilesets/Wooden_House_Walls_Tilset.png" id="1_1rdq1"]
+[ext_resource type="Script" path="res://player.gd" id="2_6jxao"]
+[ext_resource type="Texture2D" uid="uid://dnmgl6xmeou5k" path="res://0x72_DungeonTilesetII_v1.7/frames/elf_f_idle_anim_f0.png" id="3_pfk6f"]
+[ext_resource type="Texture2D" uid="uid://cv3pjk37s8wkq" path="res://0x72_DungeonTilesetII_v1.7/frames/elf_f_idle_anim_f1.png" id="4_bo5tt"]
+[ext_resource type="Texture2D" uid="uid://pvxjwrkt7wcq" path="res://0x72_DungeonTilesetII_v1.7/frames/elf_f_idle_anim_f2.png" id="5_j2e3j"]
+[ext_resource type="Texture2D" uid="uid://kjeafe6v4j0m" path="res://0x72_DungeonTilesetII_v1.7/frames/elf_f_idle_anim_f3.png" id="6_h28lj"]
+[ext_resource type="Texture2D" uid="uid://cl4hynrfixxsy" path="res://0x72_DungeonTilesetII_v1.7/frames/elf_f_run_anim_f0.png" id="7_dgbhr"]
+[ext_resource type="Texture2D" uid="uid://bamfj8jc0ss87" path="res://0x72_DungeonTilesetII_v1.7/frames/elf_f_run_anim_f1.png" id="8_tb54w"]
+[ext_resource type="Texture2D" uid="uid://b4aqwsoblgo4g" path="res://0x72_DungeonTilesetII_v1.7/frames/elf_f_run_anim_f2.png" id="9_8y6ag"]
+[ext_resource type="Texture2D" uid="uid://dl48a7w5oxkn7" path="res://0x72_DungeonTilesetII_v1.7/frames/elf_f_run_anim_f3.png" id="10_pl886"]
+[ext_resource type="Texture2D" uid="uid://bh6veklb2jbn8" path="res://1x1.png" id="11_380qf"]
+[ext_resource type="Texture2D" uid="uid://bkc7l781sifcj" path="res://Untitled-modified.png" id="12_ye4eo"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wwlrs"]
+texture = ExtResource("1_1rdq1")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_jgbri"]
+sources/0 = SubResource("TileSetAtlasSource_wwlrs")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bpooi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_380qf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ye4eo")
+}],
+"loop": true,
+"name": &"tag",
+"speed": 1.0
+}]
+
+[sub_resource type="Animation" id="Animation_8l6qs"]
+resource_name = "tag_animation"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n5f6f"]
+_data = {
+"tag_animation": SubResource("Animation_8l6qs")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ejbtt"]
+size = Vector2(15, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wv1nn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_pfk6f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bo5tt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_j2e3j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_h28lj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_dgbhr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_tb54w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8y6ag")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_pl886")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[node name="game" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD//wAAAAABAAEAAAD/////AAABAAEAAAAAAP//AAABAAEAAAAAAAAAAAABAAEAAAD+////AAABAAEAAAD+/wAAAAABAAEAAAD+/wEAAAABAAEAAAD//wEAAAABAAEAAAAAAAEAAAABAAEAAAABAAEAAAABAAEAAAABAAAAAAABAAEAAAABAP//AAABAAEAAAABAP7/AAABAAEAAAAAAP7/AAABAAEAAAD///7/AAABAAEAAAD+//7/AAABAAEAAAD9//7/AAABAAEAAAD9////AAABAAEAAAD9/wAAAAABAAEAAAD9/wEAAAABAAEAAAD9/wIAAAABAAEAAAD+/wIAAAABAAEAAAD//wIAAAABAAEAAAAAAAIAAAABAAEAAAABAAIAAAABAAEAAAACAAIAAAABAAEAAAACAAEAAAABAAEAAAACAAAAAAABAAEAAAACAP//AAABAAEAAAACAP7/AAABAAEAAAACAP3/AAABAAEAAAABAP3/AAABAAEAAAAAAP3/AAABAAEAAAD///3/AAABAAEAAAD+//3/AAABAAEAAAD9//3/AAABAAEAAAD8//3/AAABAAEAAAD8//7/AAABAAEAAAD8////AAABAAEAAAD8/wAAAAABAAEAAAD8/wEAAAABAAEAAAD8/wIAAAABAAEAAAD8/wMAAAABAAEAAAD9/wMAAAABAAEAAAD+/wMAAAABAAEAAAD//wMAAAABAAEAAAAAAAMAAAABAAEAAAABAAMAAAABAAEAAAACAAMAAAABAAEAAAADAAMAAAABAAEAAAADAAIAAAABAAEAAAADAAEAAAABAAEAAAADAAAAAAABAAEAAAADAP//AAABAAEAAAADAP7/AAABAAEAAAADAP3/AAABAAEAAAADAPz/AAABAAEAAAACAPz/AAABAAEAAAABAPz/AAABAAEAAAAAAPz/AAABAAEAAAD///z/AAABAAEAAAD+//z/AAABAAEAAAD9//z/AAABAAEAAAD8//z/AAABAAEAAAD7//z/AAABAAEAAAD7//3/AAABAAEAAAD7//7/AAABAAEAAAD7////AAABAAEAAAD7/wAAAAABAAEAAAD7/wEAAAABAAEAAAD7/wIAAAABAAEAAAD7/wMAAAABAAEAAAD7/wQAAAABAAEAAAD8/wQAAAABAAEAAAD9/wQAAAABAAEAAAD+/wQAAAABAAEAAAD//wQAAAABAAEAAAAAAAQAAAABAAEAAAABAAQAAAABAAEAAAACAAQAAAABAAEAAAADAAQAAAABAAEAAAAEAAQAAAABAAEAAAAEAAMAAAABAAEAAAAEAAIAAAABAAEAAAAEAAEAAAABAAEAAAAEAAAAAAABAAEAAAAEAP//AAABAAEAAAAEAP7/AAABAAEAAAAEAP3/AAABAAEAAAAEAPz/AAABAAEAAAD7//v/AAABAAEAAAD8//v/AAABAAEAAAD9//v/AAABAAEAAAD+//v/AAABAAEAAAD///v/AAABAAEAAAAAAPv/AAABAAEAAAABAPv/AAABAAEAAAACAPv/AAABAAEAAAADAPv/AAABAAEAAAAEAPv/AAABAAEAAAD6//r/AAAAAAAAAAD7//r/AAABAAAAAAD8//r/AAABAAAAAAD9//r/AAABAAAAAAD+//r/AAABAAAAAAD///r/AAABAAAAAAAAAPr/AAABAAAAAAABAPr/AAABAAAAAAACAPr/AAABAAAAAAADAPr/AAABAAAAAAAEAPr/AAABAAAAAAAFAPr/AAACAAAAAAD6//v/AAAAAAEAAAD6//z/AAAAAAEAAAD6//3/AAAAAAEAAAD6//7/AAAAAAEAAAD6////AAAAAAEAAAD6/wAAAAAAAAEAAAD6/wEAAAAAAAEAAAD6/wIAAAAAAAEAAAD6/wMAAAAAAAEAAAD6/wQAAAAAAAEAAAAFAPv/AAACAAEAAAAFAPz/AAACAAEAAAAFAP3/AAACAAEAAAAFAP7/AAACAAEAAAAFAP//AAACAAEAAAAFAAAAAAACAAEAAAAFAAEAAAACAAEAAAAFAAIAAAACAAEAAAAFAAMAAAACAAEAAAAFAAQAAAACAAEAAAD6/wUAAAAAAAIAAAD7/wUAAAABAAIAAAD8/wUAAAABAAIAAAD9/wUAAAABAAIAAAD+/wUAAAABAAIAAAD//wUAAAABAAIAAAAAAAUAAAABAAIAAAABAAUAAAABAAIAAAACAAUAAAABAAIAAAADAAUAAAABAAIAAAAEAAUAAAABAAIAAAAFAAUAAAACAAIAAAA=")
+tile_set = SubResource("TileSet_jgbri")
+
+[node name="seeker" type="CharacterBody2D" parent="."]
+script = ExtResource("2_6jxao")
+speed = null
+dash_speed = null
+dash_duration = null
+dash_cooldown = null
+
+[node name="tag" type="Node2D" parent="seeker"]
+
+[node name="tag_animation" type="AnimatedSprite2D" parent="seeker/tag"]
+position = Vector2(0, 9)
+sprite_frames = SubResource("SpriteFrames_bpooi")
+animation = &"tag"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="seeker/tag"]
+libraries = {
+"": SubResource("AnimationLibrary_n5f6f")
+}
+
+[node name="dash" type="Node2D" parent="seeker"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="seeker"]
+position = Vector2(-0.5, 6)
+shape = SubResource("RectangleShape2D_ejbtt")
+
+[node name="player_animation" type="AnimatedSprite2D" parent="seeker"]
+sprite_frames = SubResource("SpriteFrames_wv1nn")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Camera2D" type="Camera2D" parent="seeker"]
+zoom = Vector2(3.5, 3.5)
+position_smoothing_enabled = true
