@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://cmic438xapftt"]
 
-[ext_resource type="Script" path="res://scripts/seeker.gd" id="1_kfjqh"]
+[ext_resource type="Script" path="res://scripts/seeker2.gd" id="1_omvw6"]
 [ext_resource type="Texture2D" uid="uid://bkc7l781sifcj" path="res://assets/Untitled-modified.png" id="2_q8txa"]
 [ext_resource type="Texture2D" uid="uid://cam6yxm40qn3u" path="res://assets/Sprout Lands/Characters/Basic Charakter Spritesheet.png" id="3_paj0g"]
 
@@ -137,7 +137,7 @@ size = Vector2(9, 15)
 
 [node name="seeker" type="CharacterBody2D"]
 position = Vector2(0, -6)
-script = ExtResource("1_kfjqh")
+script = ExtResource("1_omvw6")
 
 [node name="tag_animation" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -148,7 +148,7 @@ frame_progress = 1.0
 
 [node name="seeker_animation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hoodn")
-animation = &"idle_side"
+animation = &"idle_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 6.5)
@@ -158,3 +158,12 @@ shape = SubResource("RectangleShape2D_ejbtt")
 position = Vector2(0, 6)
 zoom = Vector2(3.5, 3.5)
 position_smoothing_enabled = true
+
+[node name="dash_timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="tag_timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="tag_timer" to="." method="_on_tag_timer_timeout"]
