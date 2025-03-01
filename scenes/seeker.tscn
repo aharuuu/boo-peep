@@ -133,7 +133,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ejbtt"]
-size = Vector2(9, 15)
+size = Vector2(12, 16)
 
 [node name="seeker" type="CharacterBody2D"]
 position = Vector2(0, -6)
@@ -147,11 +147,12 @@ animation = &"tag"
 frame_progress = 1.0
 
 [node name="seeker_animation" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 6)
 sprite_frames = SubResource("SpriteFrames_hoodn")
 animation = &"idle_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 6.5)
+position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_ejbtt")
 
 [node name="Camera2D" type="Camera2D" parent="."]

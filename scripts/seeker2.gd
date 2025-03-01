@@ -18,6 +18,7 @@ func _process(delta):
 		start_dash()
 		dash_cooldown_ready = false
 		$dash_timer.start()
+		get_node("../ui/ui_cooldowns/ui_dash").value = 0
 	
 	# Check if tag key is ready
 	if Input.is_action_just_pressed("tag_key") and tag_cooldown_ready:
@@ -107,7 +108,7 @@ func end_dash():
 # Dash cooldown timer
 func _on_dash_timer_timeout() -> void:
 	dash_cooldown_ready = true
-
+	
 # Tag cooldown timer
 func _on_tag_timer_timeout() -> void:
 	tag_cooldown_ready = true
