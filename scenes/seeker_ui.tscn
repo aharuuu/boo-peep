@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvv3bwvorqxme"]
+[gd_scene load_steps=7 format=3 uid="uid://bvv3bwvorqxme"]
 
-[ext_resource type="Texture2D" uid="uid://b5j2qhjymbetj" path="res://assets/3-512.webp" id="1_v7iw5"]
+[ext_resource type="Texture2D" uid="uid://bk7y7b6lje3pa" path="res://assets/3-512.png" id="1_wt40s"]
 [ext_resource type="Script" path="res://scripts/ui_dash.gd" id="3_eg1cn"]
+[ext_resource type="Script" path="res://scripts/ui_tag.gd" id="3_hrt6x"]
+[ext_resource type="Texture2D" uid="uid://b5qq2ydmprarf" path="res://assets/x_in_a_rectangle_box_u2327_icon_256x256.png" id="3_l1egj"]
+[ext_resource type="Texture2D" uid="uid://b16hcg51sikjs" path="res://assets/x_in_a_rectangle_box_u2327_icon_256x256 (1).png" id="4_yo82d"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6t0in"]
 load_path = "res://.godot/imported/3-512over.png-e02efd604b0c7cfa8a8857e3cac6f784.ctex"
@@ -11,7 +14,7 @@ load_path = "res://.godot/imported/3-512over.png-e02efd604b0c7cfa8a8857e3cac6f78
 [node name="ui_cooldowns" type="HBoxContainer" parent="."]
 offset_left = 574.0
 offset_top = 569.0
-offset_right = 1664.0
+offset_right = 1494.0
 offset_bottom = 1081.0
 scale = Vector2(0.3, 0.3)
 
@@ -21,7 +24,7 @@ max_value = 1.5
 step = 0.0
 value = 1.5
 fill_mode = 4
-texture_under = ExtResource("1_v7iw5")
+texture_under = ExtResource("1_wt40s")
 texture_progress = SubResource("CompressedTexture2D_6t0in")
 script = ExtResource("3_eg1cn")
 
@@ -29,4 +32,20 @@ script = ExtResource("3_eg1cn")
 wait_time = 0.1
 autostart = true
 
+[node name="ui_tag" type="TextureProgressBar" parent="ui_cooldowns"]
+layout_mode = 2
+max_value = 3.0
+step = 0.0
+value = 3.0
+fill_mode = 4
+texture_under = ExtResource("3_l1egj")
+texture_progress = ExtResource("4_yo82d")
+script = ExtResource("3_hrt6x")
+
+[node name="ui_tag_timer" type="Timer" parent="ui_cooldowns/ui_tag"]
+wait_time = 0.1
+autostart = true
+
 [connection signal="timeout" from="ui_cooldowns/ui_dash/ui_dash_timer" to="ui_cooldowns/ui_dash" method="_on_ui_dash_timer_timeout"]
+[connection signal="timeout" from="ui_cooldowns/ui_tag/ui_tag_timer" to="ui_cooldowns/ui_tag" method="_on_ui_tag_timer_timeout"]
+[connection signal="timeout" from="ui_cooldowns/ui_tag/ui_tag_timer" to="ui_cooldowns/ui_tag" method="_on_ui_dash_timer_timeout"]

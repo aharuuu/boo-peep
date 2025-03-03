@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://co66p4xbl3a4r"]
+[gd_scene load_steps=8 format=4 uid="uid://dnyvqqurctaia"]
 
-[ext_resource type="PackedScene" uid="uid://cj5cg55afhbls" path="res://scenes/title_screen.tscn" id="1_53q4f"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_ftikw"]
 [ext_resource type="Texture2D" uid="uid://bob6rf375sgje" path="res://assets/Sprout Lands/Tilesets/Wooden_House_Walls_Tilset.png" id="1_w3u8h"]
 [ext_resource type="PackedScene" uid="uid://cmic438xapftt" path="res://scenes/seeker.tscn" id="2_y87iq"]
+[ext_resource type="PackedScene" uid="uid://d3ggi7ag8i5k8" path="res://scenes/back_screen.tscn" id="5_4g1ic"]
 [ext_resource type="PackedScene" uid="uid://bvv3bwvorqxme" path="res://scenes/seeker_ui.tscn" id="12_brme4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wwlrs"]
@@ -26,9 +27,7 @@ texture = ExtResource("1_w3u8h")
 sources/0 = SubResource("TileSetAtlasSource_wwlrs")
 
 [node name="game" type="Node2D"]
-position = Vector2(-7, -13)
-
-[node name="title_screen" parent="." instance=ExtResource("1_53q4f")]
+script = ExtResource("1_ftikw")
 
 [node name="map" type="TileMapLayer" parent="."]
 position = Vector2(7, 13)
@@ -36,8 +35,11 @@ tile_map_data = PackedByteArray("AAD//wAAAAABAAEAAAD/////AAABAAEAAAAAAP//AAABAAE
 tile_set = SubResource("TileSet_jgbri")
 
 [node name="seeker" parent="." instance=ExtResource("2_y87iq")]
+z_index = 1
 position = Vector2(7, 6)
 
 [node name="seeker_ui" parent="seeker" instance=ExtResource("12_brme4")]
 
 [node name="hider" type="CharacterBody2D" parent="."]
+
+[node name="back_menu" parent="." instance=ExtResource("5_4g1ic")]
