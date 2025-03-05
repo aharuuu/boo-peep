@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://cj5cg55afhbls"]
+[gd_scene load_steps=5 format=3 uid="uid://cj5cg55afhbls"]
 
-[ext_resource type="Script" path="res://scripts/title_start_button.gd" id="1_phbht"]
-[ext_resource type="Script" path="res://scripts/title_quit_button.gd" id="2_2j1xq"]
+[ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_ga2kl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wtej7"]
 font_size = 70
 
 [sub_resource type="FontFile" id="FontFile_xj1g3"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
@@ -29,25 +31,25 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ga2kl")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
+[node name="initial_menu" type="CanvasLayer" parent="."]
+
+[node name="initial_container" type="VBoxContainer" parent="initial_menu"]
 offset_left = 567.0
 offset_top = 424.0
 offset_right = 720.0
-offset_bottom = 508.0
+offset_bottom = 514.0
 
-[node name="start_button" type="Button" parent="VBoxContainer"]
+[node name="start_button" type="Button" parent="initial_menu/initial_container"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Start"
-script = ExtResource("1_phbht")
 
-[node name="quit_button" type="Button" parent="VBoxContainer"]
+[node name="quit_button" type="Button" parent="initial_menu/initial_container"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Quit"
-script = ExtResource("2_2j1xq")
 
 [node name="title" type="Label" parent="."]
 layout_mode = 0
@@ -58,7 +60,7 @@ offset_bottom = 364.0
 text = "BOO-PEEP"
 label_settings = SubResource("LabelSettings_wtej7")
 
-[node name="Label" type="Label" parent="."]
+[node name="version" type="Label" parent="."]
 layout_mode = 0
 offset_left = 601.0
 offset_top = 357.0
@@ -67,5 +69,7 @@ offset_bottom = 385.0
 text = "Pre-Alpha"
 label_settings = SubResource("LabelSettings_ickn6")
 
-[connection signal="pressed" from="VBoxContainer/start_button" to="VBoxContainer/start_button" method="_on_pressed"]
-[connection signal="pressed" from="VBoxContainer/quit_button" to="VBoxContainer/quit_button" method="_on_pressed"]
+[connection signal="pressed" from="initial_menu/initial_container/start_button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="initial_menu/initial_container/start_button" to="initial_menu/initial_container/start_button" method="_on_pressed"]
+[connection signal="pressed" from="initial_menu/initial_container/quit_button" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="initial_menu/initial_container/quit_button" to="initial_menu/initial_container/quit_button" method="_on_pressed"]

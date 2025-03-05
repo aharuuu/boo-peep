@@ -1,39 +1,39 @@
 extends CharacterBody2D
 
-var speed: float = 120.0 # Base speexzd
-var dash_speed: float = 240.0  # Dash speexd
-var dash_duration: float = 0.15  # How long the dash lasts
-var dash_cooldown: float = 1.0  # Cooldown between zzzzdashes
-var tag_cooldown: float = 2 # Cooldown between tagsz
+var speed: float = 120.0 # Base speed
+var dash_speed: float = 300.0  # Dash speed
+var dash_distance_duration: float = 0.15  # How long the dash lasts
 
 # Default variables
+var input_direction = Vector2.ZERO
 var is_dashing: bool = false
-var dash_timer: float = 0.0
-var dash_cooldown_timer: float = 0.0
-var tag_cooldown_timer: float = 0.0
+var dash_distance_timer: float = 0.0
+var dash_cooldown_ready: float = true
+var tag_cooldown_ready: float = true
 var dash_direction: Vector2 = Vector2.ZERO
 var last_movement_direction: Vector2 = Vector2.DOWN
 
+func _enter_tree():
+	set_multiplayer_authority(name.to_int())
+	
 func _process(delta):
-	# Dash cooldown
-	if dash_cooldown_timer > 0:
-		dash_cooldown_timer -= delta
-	
-	# Tag cooldown
-	if tag_cooldown_timer > 0:
-		tag_cooldown_timer -= delta
-		
 	# Check if the dash key is not playing and on cooldown
-	if Input.is_action_just_pressed("skill_key") and not is_dashing and dash_cooldown_timer <= 0:
+	if Input.is_action_just_pressed("skill_key") and not is_dashing and dash_cooldown_ready:
 		start_dash()
+		dash_cooldown_ready = false
+		$dash_timer.start()
+		$seeker_ui/ui_cooldowns/ui_dash.value = 0
 	
-	# Check if the tag key is not on cooldown
-	if Input.is_action_just_pressed("tag_key") and tag_cooldown_timer <= 0:
+	# Check if tag key is ready
+	if Input.is_action_just_pressed("tag_key") and tag_cooldown_ready:
 		start_tag()
+		tag_cooldown_ready = false
+		$tag_timer.start()
+		$seeker_ui/ui_cooldowns/ui_tag.value = 0
 		
 func _physics_process(delta):
 	move_and_slide()
-	
+
 	# Movement animation
 	var anim = $seeker_animation
 	var tag_anim = $tag_animation
@@ -74,20 +74,21 @@ func _physics_process(delta):
 		tag_anim.visible = false
 	
 	# Movement
-	var input_direction = Vector2(
-		Input.get_action_strength("right_key") - Input.get_action_strength("left_key"),
-		Input.get_action_strength("down_key") - Input.get_action_strength("up_key")
-	).normalized()
-	velocity = input_direction * speed
+	if is_multiplayer_authority():
+		input_direction = Vector2(
+			Input.get_action_strength("right_key") - Input.get_action_strength("left_key"),
+			Input.get_action_strength("down_key") - Input.get_action_strength("up_key")
+		).normalized()
+		velocity = input_direction * speed
 	
 	# Update last movement direction
-	if input_direction != Vector2.ZERO:
+	if input_direction != Vector2.ZERO: 
 		last_movement_direction = input_direction
-		
+	
 	# Dash distance
 	if is_dashing:
-		dash_timer -= delta
-		if dash_timer <= 0:
+		dash_distance_timer -= delta
+		if dash_distance_timer <= 0:
 			end_dash()
 		velocity = dash_direction * dash_speed
 	else:
@@ -97,7 +98,6 @@ func start_tag():
 	var tag_anim = $tag_animation
 	tag_anim.play("tag")
 	
-	tag_cooldown_timer = tag_cooldown
 	
 func start_dash():
 	# If no direction is pressed, dash forward based on the last movement direction
@@ -105,9 +105,16 @@ func start_dash():
 	
 	# Start the dash
 	is_dashing = true
-	dash_timer = dash_duration
-	dash_cooldown_timer = dash_cooldown
+	dash_distance_timer = dash_distance_duration
 
 func end_dash():
 	is_dashing = false
 	velocity = Vector2.ZERO  # Reset velocity after dash
+
+# Dash cooldown timer
+func _on_dash_timer_timeout() -> void:
+	dash_cooldown_ready = true
+	
+# Tag cooldown timer
+func _on_tag_timer_timeout() -> void:
+	tag_cooldown_ready = true

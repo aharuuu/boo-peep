@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvv3bwvorqxme"]
+[gd_scene load_steps=8 format=3 uid="uid://bvv3bwvorqxme"]
 
+[ext_resource type="Script" path="res://scripts/seeker_ui.gd" id="1_hcqbo"]
 [ext_resource type="Texture2D" uid="uid://bk7y7b6lje3pa" path="res://assets/3-512.png" id="1_wt40s"]
 [ext_resource type="Script" path="res://scripts/ui_dash.gd" id="3_eg1cn"]
 [ext_resource type="Script" path="res://scripts/ui_tag.gd" id="3_hrt6x"]
@@ -10,6 +11,7 @@
 load_path = "res://.godot/imported/3-512over.png-e02efd604b0c7cfa8a8857e3cac6f784.ctex"
 
 [node name="seeker_ui" type="CanvasLayer"]
+script = ExtResource("1_hcqbo")
 
 [node name="ui_cooldowns" type="HBoxContainer" parent="."]
 offset_left = 574.0
@@ -47,5 +49,5 @@ wait_time = 0.1
 autostart = true
 
 [connection signal="timeout" from="ui_cooldowns/ui_dash/ui_dash_timer" to="ui_cooldowns/ui_dash" method="_on_ui_dash_timer_timeout"]
-[connection signal="timeout" from="ui_cooldowns/ui_tag/ui_tag_timer" to="ui_cooldowns/ui_tag" method="_on_ui_tag_timer_timeout"]
 [connection signal="timeout" from="ui_cooldowns/ui_tag/ui_tag_timer" to="ui_cooldowns/ui_tag" method="_on_ui_dash_timer_timeout"]
+[connection signal="timeout" from="ui_cooldowns/ui_tag/ui_tag_timer" to="ui_cooldowns/ui_tag" method="_on_ui_tag_timer_timeout"]

@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3ggi7ag8i5k8"]
+[gd_scene load_steps=2 format=3 uid="uid://d3ggi7ag8i5k8"]
 
-[ext_resource type="Script" path="res://scripts/back_quit_button.gd" id="1_t50pl"]
-[ext_resource type="Script" path="res://scripts/back_continue_button.gd" id="1_ufc02"]
+[ext_resource type="Script" path="res://scripts/back_menu.gd" id="1_g0b3x"]
 
 [node name="back_menu" type="Control"]
 z_index = 3
@@ -11,6 +10,7 @@ offset_left = -176.0
 offset_top = -91.0
 offset_right = 190.0
 offset_bottom = 115.0
+script = ExtResource("1_g0b3x")
 
 [node name="back_menu_ui" type="CanvasLayer" parent="."]
 visible = false
@@ -27,12 +27,12 @@ offset_bottom = 387.0
 [node name="continue_button" type="Button" parent="back_menu_ui/VBoxContainer"]
 layout_mode = 2
 text = "Continue"
-script = ExtResource("1_ufc02")
 
 [node name="quit_button" type="Button" parent="back_menu_ui/VBoxContainer"]
 layout_mode = 2
 text = "Quit to Title Screen"
-script = ExtResource("1_t50pl")
 
+[connection signal="pressed" from="back_menu_ui/VBoxContainer/continue_button" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="back_menu_ui/VBoxContainer/continue_button" to="back_menu_ui/VBoxContainer/continue_button" method="_on_pressed"]
+[connection signal="pressed" from="back_menu_ui/VBoxContainer/quit_button" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="back_menu_ui/VBoxContainer/quit_button" to="back_menu_ui/VBoxContainer/quit_button" method="_on_pressed"]

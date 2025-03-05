@@ -7,6 +7,7 @@
 position = Vector2(-7, -13)
 
 [node name="title_screen" parent="." instance=ExtResource("1_24kp4")]
+script = null
 metadata/_edit_use_anchors_ = true
 
 [node name="game" parent="." instance=ExtResource("3_renxb")]
