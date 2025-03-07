@@ -1,9 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bvv3bwvorqxme"]
+[gd_scene load_steps=6 format=3 uid="uid://bvv3bwvorqxme"]
 
 [ext_resource type="Script" path="res://scripts/seeker_ui.gd" id="1_hcqbo"]
 [ext_resource type="Texture2D" uid="uid://bk7y7b6lje3pa" path="res://assets/3-512.png" id="1_wt40s"]
-[ext_resource type="Script" path="res://scripts/ui_dash.gd" id="3_eg1cn"]
-[ext_resource type="Script" path="res://scripts/ui_tag.gd" id="3_hrt6x"]
 [ext_resource type="Texture2D" uid="uid://b5qq2ydmprarf" path="res://assets/x_in_a_rectangle_box_u2327_icon_256x256.png" id="3_l1egj"]
 [ext_resource type="Texture2D" uid="uid://b16hcg51sikjs" path="res://assets/x_in_a_rectangle_box_u2327_icon_256x256 (1).png" id="4_yo82d"]
 
@@ -28,7 +26,6 @@ value = 1.5
 fill_mode = 4
 texture_under = ExtResource("1_wt40s")
 texture_progress = SubResource("CompressedTexture2D_6t0in")
-script = ExtResource("3_eg1cn")
 
 [node name="ui_dash_timer" type="Timer" parent="ui_cooldowns/ui_dash"]
 wait_time = 0.1
@@ -42,12 +39,10 @@ value = 3.0
 fill_mode = 4
 texture_under = ExtResource("3_l1egj")
 texture_progress = ExtResource("4_yo82d")
-script = ExtResource("3_hrt6x")
 
 [node name="ui_tag_timer" type="Timer" parent="ui_cooldowns/ui_tag"]
 wait_time = 0.1
 autostart = true
 
-[connection signal="timeout" from="ui_cooldowns/ui_dash/ui_dash_timer" to="ui_cooldowns/ui_dash" method="_on_ui_dash_timer_timeout"]
-[connection signal="timeout" from="ui_cooldowns/ui_tag/ui_tag_timer" to="ui_cooldowns/ui_tag" method="_on_ui_dash_timer_timeout"]
-[connection signal="timeout" from="ui_cooldowns/ui_tag/ui_tag_timer" to="ui_cooldowns/ui_tag" method="_on_ui_tag_timer_timeout"]
+[connection signal="timeout" from="ui_cooldowns/ui_dash/ui_dash_timer" to="." method="_on_ui_dash_timer_timeout"]
+[connection signal="timeout" from="ui_cooldowns/ui_tag/ui_tag_timer" to="." method="_on_ui_tag_timer_timeout"]

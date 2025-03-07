@@ -1,9 +1,9 @@
-extends Control
+extends CanvasLayer
 
 
 
 func _on_continue_button_pressed() -> void:
-	$back_menu_ui.visible = false
+	$back_menu.visible = false
 
 
 func _on_quit_button_pressed() -> void:

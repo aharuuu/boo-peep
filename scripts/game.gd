@@ -5,10 +5,10 @@ var peer = ENetMultiplayerPeer.new()
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("back_key") and not $start_menu.visible:
-		$/root/game/back_menu/back_menu_ui.visible = true
+		$back_menu.visible = true
 		 
-	if $back_menu/back_menu_ui.visible:
-		$/root/game.set_process_input(false)
+	if $back_menu.visible:
+		$".".set_process_input(false)
 		
 func _add_player(id = 1):
 	var player = player_scene.instantiate()
