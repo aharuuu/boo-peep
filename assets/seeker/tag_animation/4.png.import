@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b16hcg51sikjs"
-path="res://.godot/imported/x_in_a_rectangle_box_u2327_icon_256x256 (1).png-2ead042ac812864e994f03e401bcfccd.ctex"
+uid="uid://bd55sidhybd8y"
+path="res://.godot/imported/4.png-00b764fd9343677ec6f2180fe1513fa1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/x_in_a_rectangle_box_u2327_icon_256x256 (1).png"
-dest_files=["res://.godot/imported/x_in_a_rectangle_box_u2327_icon_256x256 (1).png-2ead042ac812864e994f03e401bcfccd.ctex"]
+source_file="res://assets/seeker/tag_animation/4.png"
+dest_files=["res://.godot/imported/4.png-00b764fd9343677ec6f2180fe1513fa1.ctex"]
 
 [params]
 

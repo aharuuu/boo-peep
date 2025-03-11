@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3b0ytllcret4"
-path="res://.godot/imported/Tailwind.png-fca46e0213b06233d241faf7595a18af.ctex"
+uid="uid://8tg8c40hitdy"
+path="res://.godot/imported/2.png-0190ba400ef23003c6da4ca8fb7115c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Tailwind.png"
-dest_files=["res://.godot/imported/Tailwind.png-fca46e0213b06233d241faf7595a18af.ctex"]
+source_file="res://assets/seeker/tag_animation/2.png"
+dest_files=["res://.godot/imported/2.png-0190ba400ef23003c6da4ca8fb7115c2.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bk7y7b6lje3pa"
-path="res://.godot/imported/3-512.png-6c4f684d35e4d5e7ce59b1f4f029f5e1.ctex"
+uid="uid://b5qq2ydmprarf"
+path="res://.godot/imported/x_in_a_rectangle_box_u2327_icon_256x256.png-8515ffd9631c39c0116fb7ffb1b06e89.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/3-512.png"
-dest_files=["res://.godot/imported/3-512.png-6c4f684d35e4d5e7ce59b1f4f029f5e1.ctex"]
+source_file="res://assets/seeker/seeker_ui/x_in_a_rectangle_box_u2327_icon_256x256.png"
+dest_files=["res://.godot/imported/x_in_a_rectangle_box_u2327_icon_256x256.png-8515ffd9631c39c0116fb7ffb1b06e89.ctex"]
 
 [params]
 

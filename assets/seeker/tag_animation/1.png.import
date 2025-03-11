@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://htudx2n1c3r7"
-path="res://.godot/imported/3-512over.png-e02efd604b0c7cfa8a8857e3cac6f784.ctex"
+uid="uid://drg55hw6iy1rd"
+path="res://.godot/imported/1.png-d7b18cc108885c6d2439b56fc5f4d0c3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/3-512over.png"
-dest_files=["res://.godot/imported/3-512over.png-e02efd604b0c7cfa8a8857e3cac6f784.ctex"]
+source_file="res://assets/seeker/tag_animation/1.png"
+dest_files=["res://.godot/imported/1.png-d7b18cc108885c6d2439b56fc5f4d0c3.ctex"]
 
 [params]
 

@@ -1,27 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://cj5cg55afhbls"]
 
 [ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_ga2kl"]
+[ext_resource type="FontFile" uid="uid://dyxv40j2au36r" path="res://fonts/Daydream.ttf" id="2_0hf7n"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_wtej7"]
+[sub_resource type="LabelSettings" id="LabelSettings_2rybq"]
+font = ExtResource("2_0hf7n")
 font_size = 70
 
-[sub_resource type="FontFile" id="FontFile_xj1g3"]
-subpixel_positioning = 0
-msdf_pixel_range = 14
-msdf_size = 128
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/20/0/ascent = 0.0
-cache/0/20/0/descent = 0.0
-cache/0/20/0/underline_position = 0.0
-cache/0/20/0/underline_thickness = 0.0
-cache/0/20/0/scale = 1.0
-
 [sub_resource type="LabelSettings" id="LabelSettings_ickn6"]
-font = SubResource("FontFile_xj1g3")
+font = ExtResource("2_0hf7n")
 font_size = 20
 
 [node name="title_screen" type="Control"]
@@ -45,13 +32,17 @@ custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 
 [node name="start_button" type="Button" parent="initial_menu/CenterContainer/initial_container"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_fonts/font = ExtResource("2_0hf7n")
+theme_override_font_sizes/font_size = 20
 text = "Start"
 
 [node name="quit_button" type="Button" parent="initial_menu/CenterContainer/initial_container"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_fonts/font = ExtResource("2_0hf7n")
+theme_override_font_sizes/font_size = 20
 text = "Quit"
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
@@ -65,7 +56,7 @@ layout_mode = 2
 [node name="title" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "BOO-PEEP"
-label_settings = SubResource("LabelSettings_wtej7")
+label_settings = SubResource("LabelSettings_2rybq")
 
 [node name="version" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2

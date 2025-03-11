@@ -3,7 +3,7 @@ extends CanvasLayer
 
 
 func _on_continue_button_pressed() -> void:
-	$back_menu.visible = false
+	$".".visible = false
 
 
 func _on_quit_button_pressed() -> void:

@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://bvv3bwvorqxme"]
 
 [ext_resource type="Script" path="res://scripts/seeker_ui.gd" id="1_hcqbo"]
-[ext_resource type="Texture2D" uid="uid://bk7y7b6lje3pa" path="res://assets/3-512.png" id="1_wt40s"]
-[ext_resource type="Texture2D" uid="uid://b5qq2ydmprarf" path="res://assets/x_in_a_rectangle_box_u2327_icon_256x256.png" id="3_l1egj"]
-[ext_resource type="Texture2D" uid="uid://b16hcg51sikjs" path="res://assets/x_in_a_rectangle_box_u2327_icon_256x256 (1).png" id="4_yo82d"]
+[ext_resource type="Texture2D" uid="uid://bk7y7b6lje3pa" path="res://assets/seeker/seeker_ui/3-512.png" id="1_wt40s"]
+[ext_resource type="Texture2D" uid="uid://b5qq2ydmprarf" path="res://assets/seeker/seeker_ui/x_in_a_rectangle_box_u2327_icon_256x256.png" id="3_l1egj"]
+[ext_resource type="Texture2D" uid="uid://b16hcg51sikjs" path="res://assets/seeker/seeker_ui/x_in_a_rectangle_box_u2327_icon_256x256 (1).png" id="4_yo82d"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6t0in"]
 load_path = "res://.godot/imported/3-512over.png-e02efd604b0c7cfa8a8857e3cac6f784.ctex"
@@ -12,10 +12,17 @@ load_path = "res://.godot/imported/3-512over.png-e02efd604b0c7cfa8a8857e3cac6f78
 script = ExtResource("1_hcqbo")
 
 [node name="ui_cooldowns" type="HBoxContainer" parent="."]
-offset_left = 574.0
-offset_top = 569.0
-offset_right = 1494.0
-offset_bottom = 1081.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_top = -153.0
+offset_right = 795.0
+offset_bottom = 359.0
+grow_horizontal = 2
+grow_vertical = 0
 scale = Vector2(0.3, 0.3)
 
 [node name="ui_dash" type="TextureProgressBar" parent="ui_cooldowns"]

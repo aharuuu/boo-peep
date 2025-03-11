@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=4 uid="uid://dnyvqqurctaia"]
+[gd_scene load_steps=13 format=4 uid="uid://dnyvqqurctaia"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_ftikw"]
 [ext_resource type="Texture2D" uid="uid://bob6rf375sgje" path="res://assets/Sprout Lands/Tilesets/Wooden_House_Walls_Tilset.png" id="1_w3u8h"]
 [ext_resource type="PackedScene" uid="uid://cmic438xapftt" path="res://scenes/seeker.tscn" id="2_swfk5"]
+[ext_resource type="PackedScene" uid="uid://bjweaiegmbxwx" path="res://scenes/hider.tscn" id="3_h78yd"]
 [ext_resource type="Texture2D" uid="uid://bc4s1dt5a36eq" path="res://assets/Sprout Lands/Tilesets/Grass.png" id="4_uvh3p"]
 [ext_resource type="Script" path="res://scripts/back_menu.gd" id="4_v7vmh"]
+[ext_resource type="FontFile" uid="uid://dyxv40j2au36r" path="res://fonts/Daydream.ttf" id="5_ggqtm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wwlrs"]
 texture = ExtResource("1_w3u8h")
@@ -180,9 +182,10 @@ sources/0 = SubResource("TileSetAtlasSource_hbjgb")
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_ftikw")
-player_scene = ExtResource("2_swfk5")
+seeker_scene = ExtResource("2_swfk5")
+hider_scene = ExtResource("3_h78yd")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="start_camera" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
 
 [node name="map" type="TileMapLayer" parent="."]
@@ -204,18 +207,24 @@ custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 
 [node name="host_button" type="Button" parent="start_menu/CenterContainer/start_container"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_fonts/font = ExtResource("5_ggqtm")
+theme_override_font_sizes/font_size = 20
 text = "Host"
 
 [node name="join_button" type="Button" parent="start_menu/CenterContainer/start_container"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_fonts/font = ExtResource("5_ggqtm")
+theme_override_font_sizes/font_size = 20
 text = "Join"
 
-[node name="back_button" type="Button" parent="start_menu/CenterContainer/start_container"]
+[node name="back_button_start" type="Button" parent="start_menu/CenterContainer/start_container"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_fonts/font = ExtResource("5_ggqtm")
+theme_override_font_sizes/font_size = 20
 text = "Back"
 
 [node name="choose_menu" type="CanvasLayer" parent="."]
@@ -226,21 +235,28 @@ offset_right = 1280.0
 offset_bottom = 720.0
 
 [node name="choose_container" type="VBoxContainer" parent="choose_menu/CenterContainer"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 
 [node name="seeker_button" type="Button" parent="choose_menu/CenterContainer/choose_container"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_fonts/font = ExtResource("5_ggqtm")
+theme_override_font_sizes/font_size = 20
 text = "Play as Seeker"
 
 [node name="hider_button" type="Button" parent="choose_menu/CenterContainer/choose_container"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_fonts/font = ExtResource("5_ggqtm")
+theme_override_font_sizes/font_size = 20
 text = "Play as Hider"
 
-[node name="back_button" type="Button" parent="choose_menu/CenterContainer/choose_container"]
+[node name="back_button_choose" type="Button" parent="choose_menu/CenterContainer/choose_container"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_fonts/font = ExtResource("5_ggqtm")
+theme_override_font_sizes/font_size = 20
 text = "Back"
 
 [node name="back_menu" type="CanvasLayer" parent="."]
@@ -270,6 +286,9 @@ spawn_path = NodePath("..")
 
 [connection signal="pressed" from="start_menu/CenterContainer/start_container/host_button" to="." method="_on_host_button_pressed"]
 [connection signal="pressed" from="start_menu/CenterContainer/start_container/join_button" to="." method="_on_join_button_pressed"]
-[connection signal="pressed" from="start_menu/CenterContainer/start_container/back_button" to="." method="_on_back_button_pressed"]
-[connection signal="pressed" from="back_menu/CenterContainer/VBoxContainer/continue_button" to="back_menu/CenterContainer/VBoxContainer/continue_button" method="_on_pressed"]
-[connection signal="pressed" from="back_menu/CenterContainer/VBoxContainer/quit_button" to="back_menu/CenterContainer/VBoxContainer/quit_button" method="_on_pressed"]
+[connection signal="pressed" from="start_menu/CenterContainer/start_container/back_button_start" to="." method="_on_back_button_start_pressed"]
+[connection signal="pressed" from="choose_menu/CenterContainer/choose_container/seeker_button" to="." method="_on_seeker_button_pressed"]
+[connection signal="pressed" from="choose_menu/CenterContainer/choose_container/hider_button" to="." method="_on_hider_button_pressed"]
+[connection signal="pressed" from="choose_menu/CenterContainer/choose_container/back_button_choose" to="." method="_on_back_button_choose_pressed"]
+[connection signal="pressed" from="back_menu/CenterContainer/VBoxContainer/continue_button" to="back_menu" method="_on_continue_button_pressed"]
+[connection signal="pressed" from="back_menu/CenterContainer/VBoxContainer/quit_button" to="back_menu" method="_on_quit_button_pressed"]
