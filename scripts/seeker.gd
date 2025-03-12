@@ -5,11 +5,13 @@ extends CharacterBody2D
 
 var speed: float = 120.0 # Base speed
 var dash_speed: float = 300.0  # Dash speed
+var dash_stock: int = 2 # Dash stock
 
 # Default variables
 var input_direction = Vector2.ZERO
 var last_movement_direction: Vector2 = Vector2.DOWN
 var dash_cooldown_ready: bool = true
+var dash_stock_cooldown_ready: bool = true
 var dash_direction: Vector2 = Vector2.ZERO
 var is_dashing: bool = false
 var tag_cooldown_ready: bool = true
@@ -24,15 +26,21 @@ func _ready():
 	animation.active = true
 	
 func _process(delta):
-	# Check if the dash key is not playing and on cooldown
-	if Input.is_action_just_pressed("skill_key") and not is_dashing and dash_cooldown_ready:
+	# Check if dash has stock and ready and is not dashing to use
+	if Input.is_action_just_pressed("skill_key") and dash_stock_cooldown_ready and dash_cooldown_ready and not is_dashing:
 		start_dash()
+		dash_stock -= 1
 		dash_cooldown_ready = false
+		
+		# Dash stock cooldown will start when the stock is less than 2
+		if dash_stock < 2:
+			$dash_stock_cooldown.start()
+		
 		$dash_cooldown.start()
 		$dash_duration.start()
 		$seeker_ui/ui_cooldowns/ui_dash.value = 0
 	
-	# Check if tag key is ready
+	# Check if tag is ready to use
 	if Input.is_action_just_pressed("tag_key") and tag_cooldown_ready:
 		start_tag()
 		tag_cooldown_ready = false
@@ -61,7 +69,20 @@ func _physics_process(delta):
 	# Update last movement direction
 	if input_direction != Vector2.ZERO: 
 		last_movement_direction = input_direction
+		
+	# Dash stock is ready when value is 1 or 2
+	if dash_stock == 1 || dash_stock == 2:
+		dash_stock_cooldown_ready = true
+	# Dash stock is not ready when value is 0
+	if dash_stock == 0:
+		dash_stock_cooldown_ready = false
+	# Dash stock cooldown stops when value is 2
+	if dash_stock == 2:
+		$dash_stock_cooldown.stop()
 	
+
+		
+		
 	# Dash distance
 	if is_dashing:
 		velocity = dash_direction * dash_speed
@@ -90,6 +111,10 @@ func end_dash():
 	is_dashing = false
 	velocity = Vector2.ZERO  # Reset velocity after dash
 	
+func _on_dash_stock_cooldown_timeout() -> void:
+	dash_stock += 1
+	print("dash stocked")
+	
 func _on_dash_cooldown_timeout() -> void:
 	dash_cooldown_ready = true
 	
@@ -98,3 +123,4 @@ func _on_dash_duration_timeout() -> void:
 	
 func _on_tag_cooldown_timeout() -> void:
 	tag_cooldown_ready = true
+	
