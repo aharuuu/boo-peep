@@ -11,7 +11,7 @@ func _process(delta: float) -> void:
 		$back_menu.visible = true
 		 
 	if $back_menu.visible:
-		$".".set_process_input(false)
+		set_process_input(false)
 	
 func _play_seeker(id = 1):
 	var seeker = seeker_scene.instantiate()
@@ -42,21 +42,21 @@ func _on_seeker_button_pressed() -> void:
 	if host:
 		peer.create_server(135)
 		multiplayer.multiplayer_peer = peer
+		multiplayer.peer_connected.connect(_play_seeker)
 	if join:
 		peer.create_client("localhost", 135)
 		multiplayer.multiplayer_peer = peer
-	multiplayer.peer_connected.connect(_play_seeker)
 	_play_seeker()
 	$choose_menu.visible = false
 	
 func _on_hider_button_pressed() -> void:
+	pass
 	if host:
 		peer.create_server(135)
 		multiplayer.multiplayer_peer = peer
 	if join:
 		peer.create_client("localhost", 135)
 		multiplayer.multiplayer_peer = peer
-	multiplayer.peer_connected.connect(_play_hider)
 	_play_hider()
 	$choose_menu.visible = false
 	

@@ -19,17 +19,16 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
-window/size/mode=1
-window/size/initial_screen=1
-window/size/resizable=false
+window/stretch/mode="viewport"
+window/vsync/vsync_mode=0
 
 [dotnet]
 
 project/assembly_name="boopeep"
 
-[gui]
+[global_group]
 
-theme/custom_font="res://fonts/Daydream.ttf"
+seeker=""
 
 [importer_defaults]
 
@@ -82,4 +81,3 @@ common/physics_interpolation=true
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-renderer/rendering_method="mobile"

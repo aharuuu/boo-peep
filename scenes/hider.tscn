@@ -1,84 +1,87 @@
-[gd_scene load_steps=48 format=3 uid="uid://bjweaiegmbxwx"]
+[gd_scene load_steps=50 format=3 uid="uid://bjweaiegmbxwx"]
 
-[ext_resource type="Script" path="res://scripts/seeker.gd" id="1_l4oys"]
-[ext_resource type="Texture2D" uid="uid://cam6yxm40qn3u" path="res://assets/Sprout Lands/Characters/Basic Charakter Spritesheet.png" id="2_j6ylk"]
-[ext_resource type="PackedScene" uid="uid://bvv3bwvorqxme" path="res://scenes/seeker_ui.tscn" id="3_2h4q7"]
+[ext_resource type="Script" path="res://scripts/hider.gd" id="1_6by6l"]
+[ext_resource type="Texture2D" uid="uid://calcla5tp5o6o" path="res://assets/hider/hider_spritesheet.png" id="2_b3xyb"]
+[ext_resource type="Script" path="res://scripts/seeker_ui.gd" id="3_gtptx"]
+[ext_resource type="Texture2D" uid="uid://bk7y7b6lje3pa" path="res://assets/seeker/seeker_ui/3-512.png" id="4_ukck7"]
+[ext_resource type="Texture2D" uid="uid://b5qq2ydmprarf" path="res://assets/seeker/seeker_ui/x_in_a_rectangle_box_u2327_icon_256x256.png" id="5_xyn8y"]
+[ext_resource type="Texture2D" uid="uid://b16hcg51sikjs" path="res://assets/seeker/seeker_ui/x_in_a_rectangle_box_u2327_icon_256x256 (1).png" id="6_6dg0v"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ejbtt"]
-size = Vector2(12, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rf37b"]
+size = Vector2(8, 3)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ooe26"]
-atlas = ExtResource("2_j6ylk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_alsab"]
+atlas = ExtResource("2_b3xyb")
 region = Rect2(0, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4u2wr"]
-atlas = ExtResource("2_j6ylk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_8l0fh"]
+atlas = ExtResource("2_b3xyb")
 region = Rect2(48, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7btgp"]
-atlas = ExtResource("2_j6ylk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gvog"]
+atlas = ExtResource("2_b3xyb")
 region = Rect2(0, 96, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n7qtf"]
-atlas = ExtResource("2_j6ylk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcnem"]
+atlas = ExtResource("2_b3xyb")
 region = Rect2(48, 96, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_giryn"]
-atlas = ExtResource("2_j6ylk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xo5e"]
+atlas = ExtResource("2_b3xyb")
 region = Rect2(0, 144, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ra7ry"]
-atlas = ExtResource("2_j6ylk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_q76ha"]
+atlas = ExtResource("2_b3xyb")
 region = Rect2(48, 144, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_67qu0"]
-atlas = ExtResource("2_j6ylk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mg0d"]
+atlas = ExtResource("2_b3xyb")
 region = Rect2(0, 48, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qdeh7"]
-atlas = ExtResource("2_j6ylk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_11yb5"]
+atlas = ExtResource("2_b3xyb")
 region = Rect2(48, 48, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v3mij"]
-atlas = ExtResource("2_j6ylk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ri8k1"]
+atlas = ExtResource("2_b3xyb")
 region = Rect2(96, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tl8d6"]
-atlas = ExtResource("2_j6ylk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_wa2cp"]
+atlas = ExtResource("2_b3xyb")
 region = Rect2(144, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rg00p"]
-atlas = ExtResource("2_j6ylk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_bh34d"]
+atlas = ExtResource("2_b3xyb")
 region = Rect2(96, 96, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i8da1"]
-atlas = ExtResource("2_j6ylk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_fq3pe"]
+atlas = ExtResource("2_b3xyb")
 region = Rect2(144, 96, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_af5ut"]
-atlas = ExtResource("2_j6ylk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_eb3bq"]
+atlas = ExtResource("2_b3xyb")
 region = Rect2(96, 144, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1a0va"]
-atlas = ExtResource("2_j6ylk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtlf4"]
+atlas = ExtResource("2_b3xyb")
 region = Rect2(144, 144, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hrn4v"]
-atlas = ExtResource("2_j6ylk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_5l2hr"]
+atlas = ExtResource("2_b3xyb")
 region = Rect2(96, 48, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cc5nb"]
-atlas = ExtResource("2_j6ylk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_byahu"]
+atlas = ExtResource("2_b3xyb")
 region = Rect2(144, 48, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hoodn"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ooe26")
+"texture": SubResource("AtlasTexture_alsab")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4u2wr")
+"texture": SubResource("AtlasTexture_8l0fh")
 }],
 "loop": true,
 "name": &"idle_down",
@@ -86,10 +89,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7btgp")
+"texture": SubResource("AtlasTexture_7gvog")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_n7qtf")
+"texture": SubResource("AtlasTexture_xcnem")
 }],
 "loop": true,
 "name": &"idle_left",
@@ -97,10 +100,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_giryn")
+"texture": SubResource("AtlasTexture_6xo5e")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ra7ry")
+"texture": SubResource("AtlasTexture_q76ha")
 }],
 "loop": true,
 "name": &"idle_right",
@@ -108,10 +111,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_67qu0")
+"texture": SubResource("AtlasTexture_4mg0d")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qdeh7")
+"texture": SubResource("AtlasTexture_11yb5")
 }],
 "loop": true,
 "name": &"idle_up",
@@ -119,10 +122,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_v3mij")
+"texture": SubResource("AtlasTexture_ri8k1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tl8d6")
+"texture": SubResource("AtlasTexture_wa2cp")
 }],
 "loop": true,
 "name": &"run_down",
@@ -130,10 +133,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rg00p")
+"texture": SubResource("AtlasTexture_bh34d")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i8da1")
+"texture": SubResource("AtlasTexture_fq3pe")
 }],
 "loop": true,
 "name": &"run_left",
@@ -141,10 +144,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_af5ut")
+"texture": SubResource("AtlasTexture_eb3bq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1a0va")
+"texture": SubResource("AtlasTexture_dtlf4")
 }],
 "loop": true,
 "name": &"run_right",
@@ -152,10 +155,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hrn4v")
+"texture": SubResource("AtlasTexture_5l2hr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cc5nb")
+"texture": SubResource("AtlasTexture_byahu")
 }],
 "loop": true,
 "name": &"run_up",
@@ -239,7 +242,7 @@ step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("seeker_animsprite:animation")
+tracks/0/path = NodePath("hider_animsprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -251,7 +254,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("seeker_animsprite:frame")
+tracks/1/path = NodePath("hider_animsprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -269,7 +272,7 @@ step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("seeker_animsprite:animation")
+tracks/0/path = NodePath("hider_animsprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -281,7 +284,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("seeker_animsprite:frame")
+tracks/1/path = NodePath("hider_animsprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -299,7 +302,7 @@ step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("seeker_animsprite:animation")
+tracks/0/path = NodePath("hider_animsprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -311,7 +314,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("seeker_animsprite:frame")
+tracks/1/path = NodePath("hider_animsprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -329,7 +332,7 @@ step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("seeker_animsprite:animation")
+tracks/0/path = NodePath("hider_animsprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -341,7 +344,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("seeker_animsprite:frame")
+tracks/1/path = NodePath("hider_animsprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -359,7 +362,7 @@ step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("seeker_animsprite:animation")
+tracks/0/path = NodePath("hider_animsprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -371,7 +374,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("seeker_animsprite:frame")
+tracks/1/path = NodePath("hider_animsprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -389,7 +392,7 @@ step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("seeker_animsprite:animation")
+tracks/0/path = NodePath("hider_animsprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -401,7 +404,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("seeker_animsprite:frame")
+tracks/1/path = NodePath("hider_animsprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -419,7 +422,7 @@ step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("seeker_animsprite:animation")
+tracks/0/path = NodePath("hider_animsprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -431,7 +434,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("seeker_animsprite:frame")
+tracks/1/path = NodePath("hider_animsprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -449,7 +452,7 @@ step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("seeker_animsprite:animation")
+tracks/0/path = NodePath("hider_animsprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -461,7 +464,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("seeker_animsprite:frame")
+tracks/1/path = NodePath("hider_animsprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -483,70 +486,96 @@ _data = {
 "run_up": SubResource("Animation_58lk6")
 }
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ycvt1"]
-load_path = "res://.godot/imported/Untitled-modified.png-1e30b314f9556841614d7c792837f7de.ctex"
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_bpooi"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("CompressedTexture2D_ycvt1")
-}],
-"loop": false,
-"name": &"tag",
-"speed": 10.0
-}]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4blc5"]
+load_path = "res://.godot/imported/3-512over.png-e02efd604b0c7cfa8a8857e3cac6f784.ctex"
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_6qihk"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
 
-[node name="hider" type="CharacterBody2D"]
+[node name="hider" type="CharacterBody2D" groups=["hider"]]
+z_index = 1
 motion_mode = 1
-script = ExtResource("1_l4oys")
+script = ExtResource("1_6by6l")
 
-[node name="seeker_camera" type="Camera2D" parent="."]
+[node name="hider_camera" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
+position_smoothing_speed = 10.0
 
-[node name="dash_timer" type="Timer" parent="."]
-wait_time = 1.5
+[node name="cloak_cooldown" type="Timer" parent="."]
+wait_time = 5.0
 one_shot = true
 
-[node name="tag_timer" type="Timer" parent="."]
-wait_time = 3.0
+[node name="hider_collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_rf37b")
 
-[node name="seeker_collision" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_ejbtt")
-
-[node name="seeker_animsprite" type="AnimatedSprite2D" parent="."]
+[node name="hider_animsprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hoodn")
 animation = &"idle_left"
 
-[node name="seeker_animtree" type="AnimationTree" parent="."]
+[node name="hider_animtree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_w6n61")
-anim_player = NodePath("../seeker_animplayer")
+anim_player = NodePath("../hider_animplayer")
 parameters/conditions/idle = false
 parameters/conditions/run = false
 parameters/Idle/blend_position = Vector2(-1.1, -0.0106384)
 parameters/Run/blend_position = Vector2(0, 0)
 
-[node name="seeker_animplayer" type="AnimationPlayer" parent="."]
+[node name="hider_animplayer" type="AnimationPlayer" parent="."]
 active = false
 libraries = {
 "": SubResource("AnimationLibrary_vads7")
 }
 
-[node name="seeker_ui" parent="." instance=ExtResource("3_2h4q7")]
-
-[node name="seeker_tag_animsprite" type="AnimatedSprite2D" parent="."]
+[node name="hider_ui" type="CanvasLayer" parent="."]
 visible = false
-sprite_frames = SubResource("SpriteFrames_bpooi")
-animation = &"tag"
-frame_progress = 1.0
+script = ExtResource("3_gtptx")
+
+[node name="ui_cooldowns" type="HBoxContainer" parent="hider_ui"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_top = -153.0
+offset_right = 795.0
+offset_bottom = 359.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.3, 0.3)
+
+[node name="ui_dash" type="TextureProgressBar" parent="hider_ui/ui_cooldowns"]
+layout_mode = 2
+max_value = 1.5
+step = 0.0
+value = 1.5
+fill_mode = 4
+texture_under = ExtResource("4_ukck7")
+texture_progress = SubResource("CompressedTexture2D_4blc5")
+
+[node name="ui_dash_timer" type="Timer" parent="hider_ui/ui_cooldowns/ui_dash"]
+wait_time = 0.1
+autostart = true
+
+[node name="ui_tag" type="TextureProgressBar" parent="hider_ui/ui_cooldowns"]
+layout_mode = 2
+max_value = 3.0
+step = 0.0
+value = 3.0
+fill_mode = 4
+texture_under = ExtResource("5_xyn8y")
+texture_progress = ExtResource("6_6dg0v")
+
+[node name="ui_tag_timer" type="Timer" parent="hider_ui/ui_cooldowns/ui_tag"]
+wait_time = 0.1
+autostart = true
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_6qihk")
 
-[connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
-[connection signal="timeout" from="tag_timer" to="." method="_on_tag_timer_timeout"]
+[connection signal="timeout" from="cloak_cooldown" to="." method="_on_cloak_cooldown_timeout"]
+[connection signal="timeout" from="hider_ui/ui_cooldowns/ui_dash/ui_dash_timer" to="hider_ui" method="_on_ui_dash_timer_timeout"]
+[connection signal="timeout" from="hider_ui/ui_cooldowns/ui_tag/ui_tag_timer" to="hider_ui" method="_on_ui_tag_timer_timeout"]
