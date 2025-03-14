@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var animation: AnimationTree = $hider_animtree
 @onready var camera: Camera2D = $hider_camera
+@onready var dust_trail = $hider_dust_trail
 
 var speed: float = 100.0 # Base speed
 var fade_duration: float = 0.5
@@ -29,7 +30,7 @@ func _process(delta):
 		cloak_cooldown_ready = false
 		is_cloaking = true
 		$cloak_cooldown.start()
-		$hider_ui/ui_cooldowns/ui_dash.value = 0
+		
 		
 func _physics_process(delta):
 	move_and_slide()
@@ -43,6 +44,11 @@ func _physics_process(delta):
 		).normalized()
 		velocity = input_direction * speed
 	
+	if velocity.length() > 0:  # Check if the player is moving
+		dust_trail.emitting = true
+	else:
+		dust_trail.emitting = false
+		
 	# Update last movement direction
 	if input_direction != Vector2.ZERO: 
 		last_movement_direction = input_direction
@@ -62,7 +68,7 @@ func _physics_process(delta):
 		else:
 			is_cloaking = false
 			timer = 0.0
-			modulate.a = 1.0  # Ensure fully visible
+			modulate.a = 1.0
 		
 # Animation
 func update_animation_parameters():

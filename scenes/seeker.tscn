@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://cmic438xapftt"]
+[gd_scene load_steps=63 format=3 uid="uid://cmic438xapftt"]
 
 [ext_resource type="Script" path="res://scripts/seeker.gd" id="1_omvw6"]
 [ext_resource type="Texture2D" uid="uid://cam6yxm40qn3u" path="res://assets/map/Sprout Lands/Characters/Basic Charakter Spritesheet.png" id="3_paj0g"]
@@ -12,9 +12,27 @@
 [ext_resource type="Texture2D" uid="uid://bk7y7b6lje3pa" path="res://assets/seeker/seeker_ui/3-512.png" id="9_r1vp0"]
 [ext_resource type="Texture2D" uid="uid://b5qq2ydmprarf" path="res://assets/seeker/seeker_ui/x_in_a_rectangle_box_u2327_icon_256x256.png" id="10_dicwu"]
 [ext_resource type="Texture2D" uid="uid://b16hcg51sikjs" path="res://assets/seeker/seeker_ui/x_in_a_rectangle_box_u2327_icon_256x256 (1).png" id="11_s6u7c"]
+[ext_resource type="Texture2D" uid="uid://dbwkp8msivvo8" path="res://assets/dust_trail.png" id="13_nkyto"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ejbtt"]
 size = Vector2(8, 3)
+
+[sub_resource type="Gradient" id="Gradient_oiwp6"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1c3oj"]
+gradient = SubResource("Gradient_oiwp6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rvfcs"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 2.0
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+gravity = Vector3(0, 5, 0)
+scale_min = 0.04
+scale_max = 0.04
+color_ramp = SubResource("GradientTexture1D_1c3oj")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bpooi"]
 animations = [{
@@ -515,6 +533,9 @@ _data = {
 "run_up": SubResource("Animation_58lk6")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_p2n8g"]
+radius = 20.0
+
 [sub_resource type="LabelSettings" id="LabelSettings_rtvca"]
 font = ExtResource("9_if4fv")
 font_size = 30
@@ -551,15 +572,28 @@ one_shot = true
 wait_time = 3.0
 one_shot = true
 
+[node name="tag_duration" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [node name="seeker_collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_ejbtt")
 
+[node name="seeker_dust_trail" type="GPUParticles2D" parent="."]
+position = Vector2(0, 6)
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_rvfcs")
+texture = ExtResource("13_nkyto")
+lifetime = 0.5
+speed_scale = 2.0
+
 [node name="seeker_tag_animsprite" type="AnimatedSprite2D" parent="."]
-visible = false
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_bpooi")
 animation = &"tag"
+frame = 4
 frame_progress = 1.0
 
 [node name="seeker_animsprite" type="AnimatedSprite2D" parent="."]
@@ -579,6 +613,12 @@ active = false
 libraries = {
 "": SubResource("AnimationLibrary_vads7")
 }
+
+[node name="tag_area" type="Area2D" parent="."]
+
+[node name="tag_area_collision" type="CollisionShape2D" parent="tag_area"]
+shape = SubResource("CircleShape2D_p2n8g")
+disabled = true
 
 [node name="seeker_ui" type="CanvasLayer" parent="."]
 script = ExtResource("8_bsyfy")
@@ -638,5 +678,6 @@ replication_config = SubResource("SceneReplicationConfig_6qihk")
 [connection signal="timeout" from="dash_cooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="timeout" from="dash_duration" to="." method="_on_dash_duration_timeout"]
 [connection signal="timeout" from="tag_cooldown" to="." method="_on_tag_cooldown_timeout"]
+[connection signal="timeout" from="tag_duration" to="." method="_on_tag_duration_timeout"]
 [connection signal="timeout" from="seeker_ui/ui_cooldowns/ui_dash/ui_dash_timer" to="seeker_ui" method="_on_ui_dash_timer_timeout"]
 [connection signal="timeout" from="seeker_ui/ui_cooldowns/ui_tag/ui_tag_timer" to="seeker_ui" method="_on_ui_tag_timer_timeout"]

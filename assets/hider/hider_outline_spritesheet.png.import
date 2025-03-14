@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbwkp8msivvo8"
-path="res://.godot/imported/TAxDHQ.png-67fa0ac385a9a2eff2ccd275f0a4f98f.ctex"
+uid="uid://bqgdpv47c56uy"
+path="res://.godot/imported/hider_outline_spritesheet.png-3f52bee9fdff8929309305db0683702e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/TAxDHQ.png"
-dest_files=["res://.godot/imported/TAxDHQ.png-67fa0ac385a9a2eff2ccd275f0a4f98f.ctex"]
+source_file="res://assets/hider/hider_outline_spritesheet.png"
+dest_files=["res://.godot/imported/hider_outline_spritesheet.png-3f52bee9fdff8929309305db0683702e.ctex"]
 
 [params]
 

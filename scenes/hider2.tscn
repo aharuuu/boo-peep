@@ -2,27 +2,13 @@
 
 [ext_resource type="Script" path="res://scripts/hider.gd" id="1_6by6l"]
 [ext_resource type="Texture2D" uid="uid://calcla5tp5o6o" path="res://assets/hider/hider_spritesheet.png" id="2_b3xyb"]
-[ext_resource type="Texture2D" uid="uid://dbwkp8msivvo8" path="res://assets/dust_trail.png" id="2_b8suw"]
+[ext_resource type="Script" path="res://scripts/seeker_ui.gd" id="3_gtptx"]
+[ext_resource type="Texture2D" uid="uid://bk7y7b6lje3pa" path="res://assets/seeker/seeker_ui/3-512.png" id="4_ukck7"]
+[ext_resource type="Texture2D" uid="uid://b5qq2ydmprarf" path="res://assets/seeker/seeker_ui/x_in_a_rectangle_box_u2327_icon_256x256.png" id="5_xyn8y"]
+[ext_resource type="Texture2D" uid="uid://b16hcg51sikjs" path="res://assets/seeker/seeker_ui/x_in_a_rectangle_box_u2327_icon_256x256 (1).png" id="6_6dg0v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rf37b"]
 size = Vector2(8, 3)
-
-[sub_resource type="Gradient" id="Gradient_n2ovt"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_o0xbn"]
-gradient = SubResource("Gradient_n2ovt")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f5wgk"]
-particle_flag_disable_z = true
-emission_shape = 1
-emission_sphere_radius = 2.0
-angle_min = 1.07288e-05
-angle_max = 1.07288e-05
-gravity = Vector3(0, 5, 0)
-scale_min = 0.04
-scale_max = 0.04
-color_ramp = SubResource("GradientTexture1D_o0xbn")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_alsab"]
 atlas = ExtResource("2_b3xyb")
@@ -88,7 +74,7 @@ region = Rect2(96, 48, 48, 48)
 atlas = ExtResource("2_b3xyb")
 region = Rect2(144, 48, 48, 48)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_xav1r"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_hoodn"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -179,51 +165,51 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jsnbs"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qst01"]
 animation = &"idle_down"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jpmlm"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j3e8v"]
 animation = &"idle_up"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_iguxd"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_33y6u"]
 animation = &"idle_right"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_an7om"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rmcg5"]
 animation = &"idle_left"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_2cccd"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_jsnbs")
+blend_point_0/node = SubResource("AnimationNodeAnimation_qst01")
 blend_point_0/pos = Vector2(0, 1)
-blend_point_1/node = SubResource("AnimationNodeAnimation_jpmlm")
+blend_point_1/node = SubResource("AnimationNodeAnimation_j3e8v")
 blend_point_1/pos = Vector2(0, -1)
-blend_point_2/node = SubResource("AnimationNodeAnimation_iguxd")
+blend_point_2/node = SubResource("AnimationNodeAnimation_33y6u")
 blend_point_2/pos = Vector2(1.1, 0)
-blend_point_3/node = SubResource("AnimationNodeAnimation_an7om")
+blend_point_3/node = SubResource("AnimationNodeAnimation_rmcg5")
 blend_point_3/pos = Vector2(-1.1, 0)
 min_space = Vector2(-1.1, -1)
 max_space = Vector2(1.1, 1)
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wm0u0"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bstc4"]
 animation = &"run_up"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q7bi1"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ixosv"]
 animation = &"run_down"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_glsmp"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_url5s"]
 animation = &"run_right"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7ovfx"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wn4wg"]
 animation = &"run_left"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_ja4my"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_wm0u0")
+blend_point_0/node = SubResource("AnimationNodeAnimation_bstc4")
 blend_point_0/pos = Vector2(0, -1)
-blend_point_1/node = SubResource("AnimationNodeAnimation_q7bi1")
+blend_point_1/node = SubResource("AnimationNodeAnimation_ixosv")
 blend_point_1/pos = Vector2(0, 1)
-blend_point_2/node = SubResource("AnimationNodeAnimation_glsmp")
+blend_point_2/node = SubResource("AnimationNodeAnimation_url5s")
 blend_point_2/pos = Vector2(1.1, 0)
-blend_point_3/node = SubResource("AnimationNodeAnimation_7ovfx")
+blend_point_3/node = SubResource("AnimationNodeAnimation_wn4wg")
 blend_point_3/pos = Vector2(-1.1, 0)
 min_space = Vector2(-1.1, -1)
 max_space = Vector2(1.1, 1)
@@ -240,7 +226,7 @@ advance_condition = &"run"
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jhps8"]
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_kby7x"]
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_w6n61"]
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_2cccd")
 states/Idle/position = Vector2(307, 144)
 states/Run/node = SubResource("AnimationNodeBlendSpace2D_ja4my")
@@ -500,13 +486,13 @@ _data = {
 "run_up": SubResource("Animation_58lk6")
 }
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4blc5"]
+load_path = "res://.godot/imported/3-512over.png-e02efd604b0c7cfa8a8857e3cac6f784.ctex"
+
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_6qihk"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_77elt"]
-size = Vector2(6, 11)
 
 [node name="hider" type="CharacterBody2D" groups=["hider"]]
 z_index = 1
@@ -525,26 +511,16 @@ one_shot = true
 position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_rf37b")
 
-[node name="hider_dust_trail" type="GPUParticles2D" parent="."]
-position = Vector2(0, 6)
-emitting = false
-amount = 1
-process_material = SubResource("ParticleProcessMaterial_f5wgk")
-texture = ExtResource("2_b8suw")
-lifetime = 0.5
-speed_scale = 2.0
-
 [node name="hider_animsprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -1)
-sprite_frames = SubResource("SpriteFrames_xav1r")
-animation = &"idle_down"
+sprite_frames = SubResource("SpriteFrames_hoodn")
+animation = &"idle_left"
 
 [node name="hider_animtree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeStateMachine_kby7x")
+tree_root = SubResource("AnimationNodeStateMachine_w6n61")
 anim_player = NodePath("../hider_animplayer")
 parameters/conditions/idle = false
 parameters/conditions/run = false
-parameters/Idle/blend_position = Vector2(0.0058099, 0.702128)
+parameters/Idle/blend_position = Vector2(-1.1, -0.0106384)
 parameters/Run/blend_position = Vector2(0, 0)
 
 [node name="hider_animplayer" type="AnimationPlayer" parent="."]
@@ -554,14 +530,52 @@ libraries = {
 }
 
 [node name="hider_ui" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("3_gtptx")
+
+[node name="ui_cooldowns" type="HBoxContainer" parent="hider_ui"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_top = -153.0
+offset_right = 795.0
+offset_bottom = 359.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.3, 0.3)
+
+[node name="ui_dash" type="TextureProgressBar" parent="hider_ui/ui_cooldowns"]
+layout_mode = 2
+max_value = 1.5
+step = 0.0
+value = 1.5
+fill_mode = 4
+texture_under = ExtResource("4_ukck7")
+texture_progress = SubResource("CompressedTexture2D_4blc5")
+
+[node name="ui_dash_timer" type="Timer" parent="hider_ui/ui_cooldowns/ui_dash"]
+wait_time = 0.1
+autostart = true
+
+[node name="ui_tag" type="TextureProgressBar" parent="hider_ui/ui_cooldowns"]
+layout_mode = 2
+max_value = 3.0
+step = 0.0
+value = 3.0
+fill_mode = 4
+texture_under = ExtResource("5_xyn8y")
+texture_progress = ExtResource("6_6dg0v")
+
+[node name="ui_tag_timer" type="Timer" parent="hider_ui/ui_cooldowns/ui_tag"]
+wait_time = 0.1
+autostart = true
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_6qihk")
 
-[node name="hider_area" type="Area2D" parent="."]
-
-[node name="hider_area_collision" type="CollisionShape2D" parent="hider_area"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_77elt")
-
 [connection signal="timeout" from="cloak_cooldown" to="." method="_on_cloak_cooldown_timeout"]
+[connection signal="timeout" from="hider_ui/ui_cooldowns/ui_dash/ui_dash_timer" to="hider_ui" method="_on_ui_dash_timer_timeout"]
+[connection signal="timeout" from="hider_ui/ui_cooldowns/ui_tag/ui_tag_timer" to="hider_ui" method="_on_ui_tag_timer_timeout"]
