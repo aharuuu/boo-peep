@@ -1,8 +1,11 @@
-[gd_scene load_steps=50 format=3 uid="uid://bjweaiegmbxwx"]
+[gd_scene load_steps=53 format=3 uid="uid://bjweaiegmbxwx"]
 
 [ext_resource type="Script" path="res://scripts/hider.gd" id="1_6by6l"]
 [ext_resource type="Texture2D" uid="uid://calcla5tp5o6o" path="res://assets/hider/hider_spritesheet.png" id="2_b3xyb"]
 [ext_resource type="Texture2D" uid="uid://dbwkp8msivvo8" path="res://assets/dust_trail.png" id="2_b8suw"]
+[ext_resource type="Script" path="res://scripts/hider_ui.gd" id="4_ditlg"]
+[ext_resource type="Texture2D" uid="uid://bswt01ip2bvf1" path="res://assets/hider/hider_ui/ui_cloak_under.png" id="5_b72xe"]
+[ext_resource type="Texture2D" uid="uid://m2vcmvy7lwmp" path="res://assets/hider/hider_ui/ui_cloak_progress.png" id="6_o87lb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rf37b"]
 size = Vector2(8, 3)
@@ -500,13 +503,22 @@ _data = {
 "run_up": SubResource("Animation_58lk6")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_77elt"]
+size = Vector2(6, 11)
+
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_6qihk"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_77elt"]
-size = Vector2(6, 11)
+properties/1/path = NodePath("hider_animsprite:animation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("hider_animplayer:current_animation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("hider_animtree:anim_player")
+properties/3/spawn = true
+properties/3/replication_mode = 1
 
 [node name="hider" type="CharacterBody2D" groups=["hider"]]
 z_index = 1
@@ -515,10 +527,10 @@ script = ExtResource("1_6by6l")
 
 [node name="hider_camera" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
-position_smoothing_speed = 10.0
+position_smoothing_enabled = true
 
 [node name="cloak_cooldown" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 10.0
 one_shot = true
 
 [node name="hider_collision" type="CollisionShape2D" parent="."]
@@ -554,9 +566,38 @@ libraries = {
 }
 
 [node name="hider_ui" type="CanvasLayer" parent="."]
+script = ExtResource("4_ditlg")
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_6qihk")
+[node name="ui_center" type="CenterContainer" parent="hider_ui"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -640.0
+offset_top = -128.0
+offset_right = -274.0
+offset_bottom = -92.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(3.5, 3.5)
+size_flags_vertical = 4
+
+[node name="ui_cooldowns" type="HBoxContainer" parent="hider_ui/ui_center"]
+layout_mode = 2
+
+[node name="ui_cloak" type="TextureProgressBar" parent="hider_ui/ui_center/ui_cooldowns"]
+layout_mode = 2
+max_value = 10.0
+step = 0.0
+value = 10.0
+fill_mode = 4
+texture_under = ExtResource("5_b72xe")
+texture_progress = ExtResource("6_o87lb")
+
+[node name="ui_cloak_timer" type="Timer" parent="hider_ui/ui_center/ui_cooldowns/ui_cloak"]
+wait_time = 0.1
+autostart = true
 
 [node name="hider_area" type="Area2D" parent="."]
 
@@ -564,4 +605,8 @@ replication_config = SubResource("SceneReplicationConfig_6qihk")
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_77elt")
 
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_6qihk")
+
 [connection signal="timeout" from="cloak_cooldown" to="." method="_on_cloak_cooldown_timeout"]
+[connection signal="timeout" from="hider_ui/ui_center/ui_cooldowns/ui_cloak/ui_cloak_timer" to="hider_ui" method="_on_ui_cloak_timer_timeout"]

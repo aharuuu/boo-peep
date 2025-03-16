@@ -3,14 +3,17 @@ extends CharacterBody2D
 @onready var animation: AnimationTree = $hider_animtree
 @onready var camera: Camera2D = $hider_camera
 @onready var dust_trail = $hider_dust_trail
+@onready var ui_cloak = $hider_ui/ui_center/ui_cooldowns/ui_cloak
+@onready var ui_cloak_timer = $hider_ui/ui_center/ui_cooldowns/ui_cloak/ui_cloak_timer
 
-var speed: float = 100.0 # Base speed
-var fade_duration: float = 0.5
-var cloak_duration: float = 3.0
+@export var speed: float = 100.0 # Base speed
+@export var fade_duration: float = 0.5
+@export var invisibility_duration: float = 3.0
 
 # Default variables
 var input_direction = Vector2.ZERO
 var last_movement_direction: Vector2 = Vector2.DOWN
+# Cloaking variables
 var cloak_cooldown_ready: bool = true
 var is_cloaking: bool = false
 var timer: float = 0.0
@@ -29,8 +32,9 @@ func _process(delta):
 		start_cloaking()
 		cloak_cooldown_ready = false
 		is_cloaking = true
+		ui_cloak.value = 0
 		$cloak_cooldown.start()
-		
+		ui_cloak_timer.start()
 		
 func _physics_process(delta):
 	move_and_slide()
@@ -53,17 +57,18 @@ func _physics_process(delta):
 	if input_direction != Vector2.ZERO: 
 		last_movement_direction = input_direction
 		
+	# Invisibility handling
 	if is_cloaking:
 		timer += delta
 		# Fade out
 		if timer <= fade_duration:
 			modulate.a = lerp(1.0, 0.0, timer / fade_duration)
 		# Stay cloaked
-		elif timer <= fade_duration + cloak_duration:
+		elif timer <= fade_duration + invisibility_duration:
 			modulate.a = 0.0
 		# Fade back in
-		elif timer <= 2 * fade_duration + cloak_duration:
-			modulate.a = lerp(0.0, 1.0, (timer - fade_duration - cloak_duration) / fade_duration)
+		elif timer <= 2 * fade_duration + invisibility_duration:
+			modulate.a = lerp(0.0, 1.0, (timer - fade_duration - invisibility_duration) / fade_duration)
 		# Reset
 		else:
 			is_cloaking = false
@@ -85,3 +90,4 @@ func start_cloaking():
 		
 func _on_cloak_cooldown_timeout() -> void:
 	cloak_cooldown_ready = true
+	

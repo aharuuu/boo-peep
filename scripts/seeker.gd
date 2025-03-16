@@ -3,12 +3,13 @@ extends CharacterBody2D
 @onready var animation: AnimationTree = $seeker_animtree
 @onready var camera: Camera2D = $seeker_camera
 @onready var dust_trail = $seeker_dust_trail
-@onready var ui_dash = $seeker_ui/ui_cooldowns/ui_dash
-@onready var ui_dash_timer = $seeker_ui/ui_cooldowns/ui_dash/ui_dash_timer
+@onready var ui_dash = $seeker_ui/ui_center/ui_cooldowns/ui_dash
+@onready var ui_dash_timer = $seeker_ui/ui_center/ui_cooldowns/ui_dash/ui_dash_timer
+@onready var ui_tag = $seeker_ui/ui_center/ui_cooldowns/ui_tag
 
-var speed: float = 120.0 # Base speed
-var dash_speed: float = 300.0  # Dash speed
-var dash_stock: int = 2 # Dash stock
+@export var speed: float = 120.0 # Base speed
+@export var dash_speed: float = 300.0  # Dash speed
+@export var dash_stock: int = 2 # Dash stock
 
 # Default variables
 var input_direction = Vector2.ZERO
@@ -31,7 +32,7 @@ func _ready():
 	if is_multiplayer_authority():
 		camera.make_current()
 	animation.active = true
-	
+
 func _process(delta):
 	# Check if dash has stock and ready and is not dashing to use
 	if Input.is_action_just_pressed("skill_key") and dash_stock_cooldown_ready and dash_cooldown_ready and not is_dashing:
@@ -47,7 +48,7 @@ func _process(delta):
 		start_tag()
 		tag_cooldown_ready = false
 		$tag_cooldown.start()
-		$seeker_ui/ui_cooldowns/ui_tag.value = 0
+		ui_tag.value = 0
 		await get_tree().create_timer(0.2).timeout
 		is_tagging = true
 		$tag_duration.start()
@@ -107,9 +108,9 @@ func _physics_process(delta):
 	
 	# Tag area handling
 	if is_tagging:
-		$seeker_tag_area/tag_collision.disabled = false
+		$seeker_tag_area/seeker_tag_area_collision.disabled = false
 	else:
-		$seeker_tag_area/tag_collision.disabled = true
+		$seeker_tag_area/seeker_tag_area_collision.disabled = true
 		
 	# Dash distance
 	if is_dashing:

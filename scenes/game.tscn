@@ -1857,59 +1857,24 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="start_container" type="VBoxContainer" parent="start_menu/CenterContainer"]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-
-[node name="host_button" type="Button" parent="start_menu/CenterContainer/start_container"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("5_ggqtm")
-theme_override_font_sizes/font_size = 20
-text = "Host"
-
-[node name="join_button" type="Button" parent="start_menu/CenterContainer/start_container"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("5_ggqtm")
-theme_override_font_sizes/font_size = 20
-text = "Join"
-
-[node name="back_button_start" type="Button" parent="start_menu/CenterContainer/start_container"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("5_ggqtm")
-theme_override_font_sizes/font_size = 20
-text = "Back"
-
-[node name="choose_menu" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="CenterContainer" type="CenterContainer" parent="choose_menu"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="choose_container" type="VBoxContainer" parent="choose_menu/CenterContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 
-[node name="seeker_button" type="Button" parent="choose_menu/CenterContainer/choose_container"]
+[node name="seeker_button" type="Button" parent="start_menu/CenterContainer/start_container"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_ggqtm")
 theme_override_font_sizes/font_size = 20
-text = "Play as Seeker"
+text = "Play Seeker"
 
-[node name="hider_button" type="Button" parent="choose_menu/CenterContainer/choose_container"]
+[node name="hider_button" type="Button" parent="start_menu/CenterContainer/start_container"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_ggqtm")
 theme_override_font_sizes/font_size = 20
-text = "Play as Hider"
+text = "Play Hider"
 
-[node name="back_button_choose" type="Button" parent="choose_menu/CenterContainer/choose_container"]
+[node name="back_button_start" type="Button" parent="start_menu/CenterContainer/start_container"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_ggqtm")
@@ -1946,7 +1911,7 @@ theme_override_font_sizes/font_size = 20
 text = "Quit to Title Screen"
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://scenes/seeker.tscn")
+_spawnable_scenes = PackedStringArray("res://scenes/seeker.tscn", "res://scenes/hider.tscn")
 spawn_path = NodePath("..")
 
 [node name="GRND_1" type="TileMapLayer" parent="."]
@@ -1970,7 +1935,7 @@ tile_set = SubResource("TileSet_tce3q")
 
 [node name="chicken_house" type="StaticBody2D" parent="."]
 z_index = 1
-position = Vector2(1, -33)
+position = Vector2(-38, -46)
 
 [node name="chicken_house_sprite" type="Sprite2D" parent="chicken_house"]
 texture = ExtResource("11_5wbmq")
@@ -1990,11 +1955,8 @@ texture = ExtResource("12_v5egi")
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_jhq34")
 
-[connection signal="pressed" from="start_menu/CenterContainer/start_container/host_button" to="." method="_on_host_button_pressed"]
-[connection signal="pressed" from="start_menu/CenterContainer/start_container/join_button" to="." method="_on_join_button_pressed"]
+[connection signal="pressed" from="start_menu/CenterContainer/start_container/seeker_button" to="." method="_on_seeker_button_pressed"]
+[connection signal="pressed" from="start_menu/CenterContainer/start_container/hider_button" to="." method="_on_hider_button_pressed"]
 [connection signal="pressed" from="start_menu/CenterContainer/start_container/back_button_start" to="." method="_on_back_button_start_pressed"]
-[connection signal="pressed" from="choose_menu/CenterContainer/choose_container/seeker_button" to="." method="_on_seeker_button_pressed"]
-[connection signal="pressed" from="choose_menu/CenterContainer/choose_container/hider_button" to="." method="_on_hider_button_pressed"]
-[connection signal="pressed" from="choose_menu/CenterContainer/choose_container/back_button_choose" to="." method="_on_back_button_choose_pressed"]
 [connection signal="pressed" from="back_menu/CenterContainer/VBoxContainer/continue_button" to="back_menu" method="_on_continue_button_pressed"]
 [connection signal="pressed" from="back_menu/CenterContainer/VBoxContainer/quit_button" to="back_menu" method="_on_quit_button_pressed"]

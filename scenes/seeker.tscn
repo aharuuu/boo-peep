@@ -9,10 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://bd55sidhybd8y" path="res://assets/seeker/tag_animation/4.png" id="8_0goyk"]
 [ext_resource type="Script" path="res://scripts/seeker_ui.gd" id="8_bsyfy"]
 [ext_resource type="FontFile" uid="uid://dyxv40j2au36r" path="res://fonts/Daydream.ttf" id="9_if4fv"]
-[ext_resource type="Texture2D" uid="uid://bk7y7b6lje3pa" path="res://assets/seeker/seeker_ui/3-512.png" id="9_r1vp0"]
-[ext_resource type="Texture2D" uid="uid://b5qq2ydmprarf" path="res://assets/seeker/seeker_ui/x_in_a_rectangle_box_u2327_icon_256x256.png" id="10_dicwu"]
-[ext_resource type="Texture2D" uid="uid://b16hcg51sikjs" path="res://assets/seeker/seeker_ui/x_in_a_rectangle_box_u2327_icon_256x256 (1).png" id="11_s6u7c"]
+[ext_resource type="Texture2D" uid="uid://cvu41if6o2g6i" path="res://assets/seeker/seeker_ui/dash_cooldown_ui.png" id="11_4dy5n"]
+[ext_resource type="Texture2D" uid="uid://cvl4wk0dbgjxg" path="res://assets/seeker/seeker_ui/dash_ui.png" id="12_e0nyg"]
 [ext_resource type="Texture2D" uid="uid://dbwkp8msivvo8" path="res://assets/dust_trail.png" id="13_nkyto"]
+[ext_resource type="Texture2D" uid="uid://ddb0ls5k6arvs" path="res://assets/seeker/seeker_ui/tag_ui_under.png" id="13_u6ofp"]
+[ext_resource type="Texture2D" uid="uid://bwvv1jdxpewwq" path="res://assets/seeker/seeker_ui/tag_ui_progress.png" id="14_7npgr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ejbtt"]
 size = Vector2(8, 3)
@@ -540,9 +541,6 @@ radius = 20.0
 font = ExtResource("9_if4fv")
 font_size = 30
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_crytb"]
-load_path = "res://.godot/imported/3-512over.png-e02efd604b0c7cfa8a8857e3cac6f784.ctex"
-
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_6qihk"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
@@ -599,6 +597,7 @@ frame_progress = 1.0
 [node name="seeker_animsprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hoodn")
 animation = &"idle_left"
+frame = 1
 
 [node name="seeker_animtree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_w6n61")
@@ -614,9 +613,9 @@ libraries = {
 "": SubResource("AnimationLibrary_vads7")
 }
 
-[node name="tag_area" type="Area2D" parent="."]
+[node name="seeker_tag_area" type="Area2D" parent="."]
 
-[node name="tag_area_collision" type="CollisionShape2D" parent="tag_area"]
+[node name="seeker_tag_area_collision" type="CollisionShape2D" parent="seeker_tag_area"]
 shape = SubResource("CircleShape2D_p2n8g")
 disabled = true
 
@@ -624,50 +623,54 @@ disabled = true
 script = ExtResource("8_bsyfy")
 
 [node name="ui_dash_stock" type="Label" parent="seeker_ui"]
-offset_left = 593.0
-offset_top = 559.0
-offset_right = 621.0
-offset_bottom = 600.0
+offset_left = 576.0
+offset_top = 568.0
+offset_right = 604.0
+offset_bottom = 609.0
 text = "2"
 label_settings = SubResource("LabelSettings_rtvca")
 
-[node name="ui_cooldowns" type="HBoxContainer" parent="seeker_ui"]
+[node name="ui_center" type="CenterContainer" parent="seeker_ui"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -125.0
-offset_top = -153.0
-offset_right = 795.0
-offset_bottom = 359.0
+offset_left = -640.0
+offset_top = -128.0
+offset_right = -274.0
+offset_bottom = -92.0
 grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(0.3, 0.3)
+scale = Vector2(3.5, 3.5)
+size_flags_vertical = 4
 
-[node name="ui_dash" type="TextureProgressBar" parent="seeker_ui/ui_cooldowns"]
+[node name="ui_cooldowns" type="HBoxContainer" parent="seeker_ui/ui_center"]
+layout_mode = 2
+
+[node name="ui_dash" type="TextureProgressBar" parent="seeker_ui/ui_center/ui_cooldowns"]
 layout_mode = 2
 max_value = 1.5
 step = 0.0
 value = 1.5
 fill_mode = 4
-texture_under = ExtResource("9_r1vp0")
-texture_progress = SubResource("CompressedTexture2D_crytb")
+texture_under = ExtResource("11_4dy5n")
+texture_progress = ExtResource("12_e0nyg")
 
-[node name="ui_dash_timer" type="Timer" parent="seeker_ui/ui_cooldowns/ui_dash"]
+[node name="ui_dash_timer" type="Timer" parent="seeker_ui/ui_center/ui_cooldowns/ui_dash"]
 wait_time = 0.1
 autostart = true
 
-[node name="ui_tag" type="TextureProgressBar" parent="seeker_ui/ui_cooldowns"]
+[node name="ui_tag" type="TextureProgressBar" parent="seeker_ui/ui_center/ui_cooldowns"]
 layout_mode = 2
 max_value = 3.0
 step = 0.0
 value = 3.0
 fill_mode = 4
-texture_under = ExtResource("10_dicwu")
-texture_progress = ExtResource("11_s6u7c")
+texture_under = ExtResource("13_u6ofp")
+texture_progress = ExtResource("14_7npgr")
 
-[node name="ui_tag_timer" type="Timer" parent="seeker_ui/ui_cooldowns/ui_tag"]
+[node name="ui_tag_timer" type="Timer" parent="seeker_ui/ui_center/ui_cooldowns/ui_tag"]
 wait_time = 0.1
 autostart = true
 
@@ -679,5 +682,5 @@ replication_config = SubResource("SceneReplicationConfig_6qihk")
 [connection signal="timeout" from="dash_duration" to="." method="_on_dash_duration_timeout"]
 [connection signal="timeout" from="tag_cooldown" to="." method="_on_tag_cooldown_timeout"]
 [connection signal="timeout" from="tag_duration" to="." method="_on_tag_duration_timeout"]
-[connection signal="timeout" from="seeker_ui/ui_cooldowns/ui_dash/ui_dash_timer" to="seeker_ui" method="_on_ui_dash_timer_timeout"]
-[connection signal="timeout" from="seeker_ui/ui_cooldowns/ui_tag/ui_tag_timer" to="seeker_ui" method="_on_ui_tag_timer_timeout"]
+[connection signal="timeout" from="seeker_ui/ui_center/ui_cooldowns/ui_dash/ui_dash_timer" to="seeker_ui" method="_on_ui_dash_timer_timeout"]
+[connection signal="timeout" from="seeker_ui/ui_center/ui_cooldowns/ui_tag/ui_tag_timer" to="seeker_ui" method="_on_ui_tag_timer_timeout"]

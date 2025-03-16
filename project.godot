@@ -29,6 +29,7 @@ project/assembly_name="boopeep"
 [global_group]
 
 seeker=""
+hider=""
 
 [importer_defaults]
 
