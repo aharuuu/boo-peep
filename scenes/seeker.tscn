@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://cmic438xapftt"]
+[gd_scene load_steps=64 format=3 uid="uid://cmic438xapftt"]
 
 [ext_resource type="Script" path="res://scripts/seeker.gd" id="1_omvw6"]
 [ext_resource type="Texture2D" uid="uid://cam6yxm40qn3u" path="res://assets/map/Sprout Lands/Characters/Basic Charakter Spritesheet.png" id="3_paj0g"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dbwkp8msivvo8" path="res://assets/dust_trail.png" id="13_nkyto"]
 [ext_resource type="Texture2D" uid="uid://ddb0ls5k6arvs" path="res://assets/seeker/seeker_ui/tag_ui_under.png" id="13_u6ofp"]
 [ext_resource type="Texture2D" uid="uid://bwvv1jdxpewwq" path="res://assets/seeker/seeker_ui/tag_ui_progress.png" id="14_7npgr"]
+[ext_resource type="Script" path="res://scenes/seeker_chat.gd" id="15_ls0hi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ejbtt"]
 size = Vector2(8, 3)
@@ -674,6 +675,30 @@ texture_progress = ExtResource("14_7npgr")
 wait_time = 0.1
 autostart = true
 
+[node name="chat_ui" type="CanvasLayer" parent="."]
+script = ExtResource("15_ls0hi")
+
+[node name="message" type="LineEdit" parent="chat_ui"]
+offset_left = 9.0
+offset_top = 581.0
+offset_right = 98.0
+offset_bottom = 612.0
+placeholder_text = "Message"
+
+[node name="send" type="Button" parent="chat_ui"]
+offset_left = 157.0
+offset_top = 582.0
+offset_right = 204.0
+offset_bottom = 613.0
+text = "Send"
+
+[node name="messages" type="TextEdit" parent="chat_ui"]
+offset_left = 8.0
+offset_top = 376.0
+offset_right = 208.0
+offset_bottom = 576.0
+editable = false
+
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_6qihk")
 
@@ -684,3 +709,4 @@ replication_config = SubResource("SceneReplicationConfig_6qihk")
 [connection signal="timeout" from="tag_duration" to="." method="_on_tag_duration_timeout"]
 [connection signal="timeout" from="seeker_ui/ui_center/ui_cooldowns/ui_dash/ui_dash_timer" to="seeker_ui" method="_on_ui_dash_timer_timeout"]
 [connection signal="timeout" from="seeker_ui/ui_center/ui_cooldowns/ui_tag/ui_tag_timer" to="seeker_ui" method="_on_ui_tag_timer_timeout"]
+[connection signal="pressed" from="chat_ui/send" to="chat_ui" method="_on_send_pressed"]

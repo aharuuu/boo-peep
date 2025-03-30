@@ -7,7 +7,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_myl8a"]
 font = ExtResource("3_owray")
 font_size = 32
-font_color = Color(0.848741, 0.909251, 0.766221, 1)
+font_color = Color(0.596078, 0.894118, 0.313726, 1)
 
 [node name="Control" type="Control"]
 layout_mode = 3

@@ -550,7 +550,6 @@ speed_scale = 2.0
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_xav1r")
 animation = &"idle_down"
-frame = 1
 
 [node name="hider_animtree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_kby7x")
