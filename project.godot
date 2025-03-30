@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="boo-peep"
-run/main_scene="res://scenes/title_screen.tscn"
+run/main_scene="res://scenes/splash.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
+boot_splash/minimum_display_time=1000
 
 [display]
 
