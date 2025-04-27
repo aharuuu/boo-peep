@@ -20,6 +20,7 @@ offset_bottom = 400.0
 text = "Host"
 
 [node name="join" type="Button" parent="."]
+layout_mode = 0
 offset_left = 320.0
 offset_top = 370.0
 offset_right = 358.0
@@ -36,6 +37,7 @@ placeholder_text = "Username"
 
 [node name="message" type="LineEdit" parent="."]
 visible = false
+layout_mode = 0
 offset_left = 9.0
 offset_top = 581.0
 offset_right = 98.0
