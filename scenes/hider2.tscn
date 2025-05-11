@@ -1,8 +1,8 @@
 [gd_scene load_steps=50 format=3 uid="uid://bjweaiegmbxwx"]
 
-[ext_resource type="Script" path="res://scripts/hider.gd" id="1_6by6l"]
+[ext_resource type="Script" uid="uid://busb73s3aw432" path="res://scripts/hider.gd" id="1_6by6l"]
 [ext_resource type="Texture2D" uid="uid://calcla5tp5o6o" path="res://assets/hider/hider_spritesheet.png" id="2_b3xyb"]
-[ext_resource type="Script" path="res://scripts/seeker_ui.gd" id="3_gtptx"]
+[ext_resource type="Script" uid="uid://dxfyoyd8iprw6" path="res://scripts/seeker_ui.gd" id="3_gtptx"]
 [ext_resource type="Texture2D" uid="uid://bk7y7b6lje3pa" path="res://assets/seeker/seeker_ui/3-512.png" id="4_ukck7"]
 [ext_resource type="Texture2D" uid="uid://b5qq2ydmprarf" path="res://assets/seeker/seeker_ui/x_in_a_rectangle_box_u2327_icon_256x256.png" id="5_xyn8y"]
 [ext_resource type="Texture2D" uid="uid://b16hcg51sikjs" path="res://assets/seeker/seeker_ui/x_in_a_rectangle_box_u2327_icon_256x256 (1).png" id="6_6dg0v"]
@@ -476,18 +476,17 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vads7"]
 _data = {
-"idle_down": SubResource("Animation_w1byq"),
-"idle_left": SubResource("Animation_60b6h"),
-"idle_right": SubResource("Animation_jwhnu"),
-"idle_up": SubResource("Animation_1n3cp"),
-"run_down": SubResource("Animation_q3xjy"),
-"run_left": SubResource("Animation_wt3lm"),
-"run_right": SubResource("Animation_hn8cn"),
-"run_up": SubResource("Animation_58lk6")
+&"idle_down": SubResource("Animation_w1byq"),
+&"idle_left": SubResource("Animation_60b6h"),
+&"idle_right": SubResource("Animation_jwhnu"),
+&"idle_up": SubResource("Animation_1n3cp"),
+&"run_down": SubResource("Animation_q3xjy"),
+&"run_left": SubResource("Animation_wt3lm"),
+&"run_right": SubResource("Animation_hn8cn"),
+&"run_up": SubResource("Animation_58lk6")
 }
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4blc5"]
-load_path = "res://.godot/imported/3-512over.png-e02efd604b0c7cfa8a8857e3cac6f784.ctex"
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_6qihk"]
 properties/0/path = NodePath(".:position")

@@ -1,9 +1,9 @@
 [gd_scene load_steps=22 format=4 uid="uid://dnyvqqurctaia"]
 
-[ext_resource type="Script" path="res://scripts/game.gd" id="1_ftikw"]
+[ext_resource type="Script" uid="uid://cvv6hs5behuco" path="res://scripts/game.gd" id="1_ftikw"]
 [ext_resource type="PackedScene" uid="uid://cmic438xapftt" path="res://scenes/seeker.tscn" id="2_swfk5"]
 [ext_resource type="PackedScene" uid="uid://bjweaiegmbxwx" path="res://scenes/hider.tscn" id="3_h78yd"]
-[ext_resource type="Script" path="res://scripts/back_menu.gd" id="4_v7vmh"]
+[ext_resource type="Script" uid="uid://domlxbrrxh1vd" path="res://scripts/back_menu.gd" id="4_v7vmh"]
 [ext_resource type="FontFile" uid="uid://dyxv40j2au36r" path="res://fonts/Daydream.ttf" id="5_ggqtm"]
 [ext_resource type="Texture2D" uid="uid://divga6o736bbe" path="res://asset/TX Plant.png" id="12_74mvn"]
 [ext_resource type="Texture2D" uid="uid://cha3c8cub3q7e" path="res://asset/TX Tileset Grass.png" id="14_jv41q"]
@@ -1962,8 +1962,32 @@ theme_override_fonts/font = ExtResource("5_ggqtm")
 theme_override_font_sizes/font_size = 20
 text = "Quit to Title Screen"
 
+[node name="chat_ui" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="message" type="LineEdit" parent="chat_ui"]
+offset_left = 9.0
+offset_top = 581.0
+offset_right = 98.0
+offset_bottom = 612.0
+placeholder_text = "Message"
+
+[node name="send" type="Button" parent="chat_ui"]
+offset_left = 157.0
+offset_top = 582.0
+offset_right = 204.0
+offset_bottom = 613.0
+text = "Send"
+
+[node name="messages" type="TextEdit" parent="chat_ui"]
+offset_left = 8.0
+offset_top = 376.0
+offset_right = 208.0
+offset_bottom = 576.0
+editable = false
+
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://scenes/seeker.tscn", "res://scenes/hider.tscn")
+_spawnable_scenes = PackedStringArray("uid://cmic438xapftt", "uid://bjweaiegmbxwx")
 spawn_path = NodePath("..")
 
 [node name="map" type="Node2D" parent="."]
@@ -2026,3 +2050,4 @@ shape = SubResource("SegmentShape2D_56aqc")
 [connection signal="pressed" from="start_menu/CenterContainer/start_container/back_button_start" to="." method="_on_back_button_start_pressed"]
 [connection signal="pressed" from="back_menu/CenterContainer/VBoxContainer/continue_button" to="back_menu" method="_on_continue_button_pressed"]
 [connection signal="pressed" from="back_menu/CenterContainer/VBoxContainer/quit_button" to="back_menu" method="_on_quit_button_pressed"]
+[connection signal="pressed" from="chat_ui/send" to="." method="_on_send_pressed"]

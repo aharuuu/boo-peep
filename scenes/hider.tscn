@@ -1,9 +1,9 @@
 [gd_scene load_steps=53 format=3 uid="uid://bjweaiegmbxwx"]
 
-[ext_resource type="Script" path="res://scripts/hider.gd" id="1_6by6l"]
+[ext_resource type="Script" uid="uid://busb73s3aw432" path="res://scripts/hider.gd" id="1_6by6l"]
 [ext_resource type="Texture2D" uid="uid://calcla5tp5o6o" path="res://assets/hider/hider_spritesheet.png" id="2_b3xyb"]
 [ext_resource type="Texture2D" uid="uid://dbwkp8msivvo8" path="res://assets/dust_trail.png" id="2_b8suw"]
-[ext_resource type="Script" path="res://scripts/hider_ui.gd" id="4_ditlg"]
+[ext_resource type="Script" uid="uid://dw1yx6x8aa6d0" path="res://scripts/hider_ui.gd" id="4_ditlg"]
 [ext_resource type="Texture2D" uid="uid://bswt01ip2bvf1" path="res://assets/hider/hider_ui/ui_cloak_under.png" id="5_b72xe"]
 [ext_resource type="Texture2D" uid="uid://m2vcmvy7lwmp" path="res://assets/hider/hider_ui/ui_cloak_progress.png" id="6_o87lb"]
 
@@ -493,14 +493,14 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vads7"]
 _data = {
-"idle_down": SubResource("Animation_w1byq"),
-"idle_left": SubResource("Animation_60b6h"),
-"idle_right": SubResource("Animation_jwhnu"),
-"idle_up": SubResource("Animation_1n3cp"),
-"run_down": SubResource("Animation_q3xjy"),
-"run_left": SubResource("Animation_wt3lm"),
-"run_right": SubResource("Animation_hn8cn"),
-"run_up": SubResource("Animation_58lk6")
+&"idle_down": SubResource("Animation_w1byq"),
+&"idle_left": SubResource("Animation_60b6h"),
+&"idle_right": SubResource("Animation_jwhnu"),
+&"idle_up": SubResource("Animation_1n3cp"),
+&"run_down": SubResource("Animation_q3xjy"),
+&"run_left": SubResource("Animation_wt3lm"),
+&"run_right": SubResource("Animation_hn8cn"),
+&"run_up": SubResource("Animation_58lk6")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_77elt"]
@@ -541,15 +541,16 @@ shape = SubResource("RectangleShape2D_rf37b")
 position = Vector2(0, 6)
 emitting = false
 amount = 1
-process_material = SubResource("ParticleProcessMaterial_f5wgk")
 texture = ExtResource("2_b8suw")
 lifetime = 0.5
 speed_scale = 2.0
+process_material = SubResource("ParticleProcessMaterial_f5wgk")
 
 [node name="hider_animsprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_xav1r")
 animation = &"idle_down"
+frame = 1
 
 [node name="hider_animtree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_kby7x")
@@ -562,10 +563,11 @@ parameters/Run/blend_position = Vector2(0, 0)
 [node name="hider_animplayer" type="AnimationPlayer" parent="."]
 active = false
 libraries = {
-"": SubResource("AnimationLibrary_vads7")
+&"": SubResource("AnimationLibrary_vads7")
 }
 
 [node name="hider_ui" type="CanvasLayer" parent="."]
+layer = 0
 script = ExtResource("4_ditlg")
 
 [node name="ui_center" type="CenterContainer" parent="hider_ui"]

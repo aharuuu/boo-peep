@@ -1,20 +1,19 @@
-[gd_scene load_steps=64 format=3 uid="uid://cmic438xapftt"]
+[gd_scene load_steps=63 format=3 uid="uid://cmic438xapftt"]
 
-[ext_resource type="Script" path="res://scripts/seeker.gd" id="1_omvw6"]
+[ext_resource type="Script" uid="uid://d18ldb67806c0" path="res://scripts/seeker.gd" id="1_omvw6"]
 [ext_resource type="Texture2D" uid="uid://cam6yxm40qn3u" path="res://assets/map/Sprout Lands/Characters/Basic Charakter Spritesheet.png" id="3_paj0g"]
 [ext_resource type="Texture2D" uid="uid://b50gmo18lad63" path="res://assets/seeker/tag_animation/0.png" id="4_sm5bu"]
 [ext_resource type="Texture2D" uid="uid://drg55hw6iy1rd" path="res://assets/seeker/tag_animation/1.png" id="5_jqhji"]
 [ext_resource type="Texture2D" uid="uid://8tg8c40hitdy" path="res://assets/seeker/tag_animation/2.png" id="6_8nqnr"]
 [ext_resource type="Texture2D" uid="uid://d38d5rqsjegs5" path="res://assets/seeker/tag_animation/3.png" id="7_782tx"]
 [ext_resource type="Texture2D" uid="uid://bd55sidhybd8y" path="res://assets/seeker/tag_animation/4.png" id="8_0goyk"]
-[ext_resource type="Script" path="res://scripts/seeker_ui.gd" id="8_bsyfy"]
+[ext_resource type="Script" uid="uid://dxfyoyd8iprw6" path="res://scripts/seeker_ui.gd" id="8_bsyfy"]
 [ext_resource type="FontFile" uid="uid://dyxv40j2au36r" path="res://fonts/Daydream.ttf" id="9_if4fv"]
-[ext_resource type="Texture2D" uid="uid://cvu41if6o2g6i" path="res://assets/seeker/seeker_ui/dash_cooldown_ui.png" id="11_4dy5n"]
-[ext_resource type="Texture2D" uid="uid://cvl4wk0dbgjxg" path="res://assets/seeker/seeker_ui/dash_ui.png" id="12_e0nyg"]
+[ext_resource type="Texture2D" uid="uid://lp0ppa70jcxp" path="res://assets/seeker/seeker_ui/dash_ui_under.png" id="11_uyx71"]
+[ext_resource type="Texture2D" uid="uid://goeavnvpnk3" path="res://assets/seeker/seeker_ui/dash_ui_progress.png" id="12_vm5ra"]
 [ext_resource type="Texture2D" uid="uid://dbwkp8msivvo8" path="res://assets/dust_trail.png" id="13_nkyto"]
 [ext_resource type="Texture2D" uid="uid://ddb0ls5k6arvs" path="res://assets/seeker/seeker_ui/tag_ui_under.png" id="13_u6ofp"]
 [ext_resource type="Texture2D" uid="uid://bwvv1jdxpewwq" path="res://assets/seeker/seeker_ui/tag_ui_progress.png" id="14_7npgr"]
-[ext_resource type="Script" path="res://scenes/seeker_chat.gd" id="15_ls0hi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ejbtt"]
 size = Vector2(8, 3)
@@ -525,14 +524,14 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vads7"]
 _data = {
-"idle_down": SubResource("Animation_w1byq"),
-"idle_left": SubResource("Animation_60b6h"),
-"idle_right": SubResource("Animation_jwhnu"),
-"idle_up": SubResource("Animation_1n3cp"),
-"run_down": SubResource("Animation_q3xjy"),
-"run_left": SubResource("Animation_wt3lm"),
-"run_right": SubResource("Animation_hn8cn"),
-"run_up": SubResource("Animation_58lk6")
+&"idle_down": SubResource("Animation_w1byq"),
+&"idle_left": SubResource("Animation_60b6h"),
+&"idle_right": SubResource("Animation_jwhnu"),
+&"idle_up": SubResource("Animation_1n3cp"),
+&"run_down": SubResource("Animation_q3xjy"),
+&"run_left": SubResource("Animation_wt3lm"),
+&"run_right": SubResource("Animation_hn8cn"),
+&"run_up": SubResource("Animation_58lk6")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p2n8g"]
@@ -583,10 +582,10 @@ shape = SubResource("RectangleShape2D_ejbtt")
 position = Vector2(0, 6)
 emitting = false
 amount = 1
-process_material = SubResource("ParticleProcessMaterial_rvfcs")
 texture = ExtResource("13_nkyto")
 lifetime = 0.5
 speed_scale = 2.0
+process_material = SubResource("ParticleProcessMaterial_rvfcs")
 
 [node name="seeker_tag_animsprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
@@ -611,7 +610,7 @@ parameters/Run/blend_position = Vector2(0, 0)
 [node name="seeker_animplayer" type="AnimationPlayer" parent="."]
 active = false
 libraries = {
-"": SubResource("AnimationLibrary_vads7")
+&"": SubResource("AnimationLibrary_vads7")
 }
 
 [node name="seeker_tag_area" type="Area2D" parent="."]
@@ -621,6 +620,7 @@ shape = SubResource("CircleShape2D_p2n8g")
 disabled = true
 
 [node name="seeker_ui" type="CanvasLayer" parent="."]
+layer = 0
 script = ExtResource("8_bsyfy")
 
 [node name="ui_dash_stock" type="Label" parent="seeker_ui"]
@@ -655,8 +655,8 @@ max_value = 1.5
 step = 0.0
 value = 1.5
 fill_mode = 4
-texture_under = ExtResource("11_4dy5n")
-texture_progress = ExtResource("12_e0nyg")
+texture_under = ExtResource("11_uyx71")
+texture_progress = ExtResource("12_vm5ra")
 
 [node name="ui_dash_timer" type="Timer" parent="seeker_ui/ui_center/ui_cooldowns/ui_dash"]
 wait_time = 0.1
@@ -675,30 +675,6 @@ texture_progress = ExtResource("14_7npgr")
 wait_time = 0.1
 autostart = true
 
-[node name="chat_ui" type="CanvasLayer" parent="."]
-script = ExtResource("15_ls0hi")
-
-[node name="message" type="LineEdit" parent="chat_ui"]
-offset_left = 9.0
-offset_top = 581.0
-offset_right = 98.0
-offset_bottom = 612.0
-placeholder_text = "Message"
-
-[node name="send" type="Button" parent="chat_ui"]
-offset_left = 157.0
-offset_top = 582.0
-offset_right = 204.0
-offset_bottom = 613.0
-text = "Send"
-
-[node name="messages" type="TextEdit" parent="chat_ui"]
-offset_left = 8.0
-offset_top = 376.0
-offset_right = 208.0
-offset_bottom = 576.0
-editable = false
-
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_6qihk")
 
@@ -709,4 +685,3 @@ replication_config = SubResource("SceneReplicationConfig_6qihk")
 [connection signal="timeout" from="tag_duration" to="." method="_on_tag_duration_timeout"]
 [connection signal="timeout" from="seeker_ui/ui_center/ui_cooldowns/ui_dash/ui_dash_timer" to="seeker_ui" method="_on_ui_dash_timer_timeout"]
 [connection signal="timeout" from="seeker_ui/ui_center/ui_cooldowns/ui_tag/ui_tag_timer" to="seeker_ui" method="_on_ui_tag_timer_timeout"]
-[connection signal="pressed" from="chat_ui/send" to="chat_ui" method="_on_send_pressed"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cj5cg55afhbls"]
 
-[ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_ga2kl"]
+[ext_resource type="Script" uid="uid://dugan6twn7dwm" path="res://scripts/title_screen.gd" id="1_ga2kl"]
 [ext_resource type="FontFile" uid="uid://dyxv40j2au36r" path="res://fonts/Daydream.ttf" id="2_0hf7n"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2rybq"]

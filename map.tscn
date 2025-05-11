@@ -1,17 +1,14 @@
-[gd_scene load_steps=19 format=4 uid="uid://l1ee36hub0jx"]
+[gd_scene load_steps=17 format=4 uid="uid://l1ee36hub0jx"]
 
-[ext_resource type="Texture2D" uid="uid://cbyctyaxeuldd" path="res://asset/mainlevbuild.png" id="1_kgo6c"]
-[ext_resource type="Texture2D" uid="uid://dc0et76dbfj01" path="res://asset/FullSheet.png" id="2_6aegt"]
 [ext_resource type="Texture2D" uid="uid://divga6o736bbe" path="res://asset/TX Plant.png" id="2_qtwfr"]
-[ext_resource type="Texture2D" uid="uid://bx8ovaav8txij" path="res://asset/TX Props.png" id="3_p12hw"]
+[ext_resource type="Texture2D" uid="uid://ckruhhv4emuwo" path="res://asset/TX Props.png" id="3_p12hw"]
 [ext_resource type="Texture2D" uid="uid://cn3w4bxxxfb2y" path="res://icon.svg" id="5_hq8q5"]
 [ext_resource type="Texture2D" uid="uid://cha3c8cub3q7e" path="res://asset/TX Tileset Grass.png" id="5_kk2o7"]
-[ext_resource type="Texture2D" uid="uid://b434nmtm18hvt" path="res://asset/TX Shadow Plant.png" id="6_6my5w"]
-[ext_resource type="Texture2D" uid="uid://cyijvvadttcx1" path="res://asset/TX Shadow.png" id="7_rmgh8"]
+[ext_resource type="Texture2D" uid="uid://cb3yu1dili1r1" path="res://asset/TX Shadow Plant.png" id="6_6my5w"]
+[ext_resource type="Texture2D" uid="uid://3th83ik7nl7p" path="res://asset/TX Shadow.png" id="7_rmgh8"]
 [ext_resource type="Texture2D" uid="uid://blngrwcdo01mj" path="res://asset/TX Tileset Stone Ground.png" id="8_3064v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nu758"]
-texture = ExtResource("1_kgo6c")
 40:0/0 = 0
 41:0/0 = 0
 42:0/0 = 0
@@ -1088,7 +1085,6 @@ texture = ExtResource("1_kgo6c")
 31:20/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_764oy"]
-texture = ExtResource("2_6aegt")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0

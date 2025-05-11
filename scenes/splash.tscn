@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bjj8c878t8uv4"]
 
-[ext_resource type="Script" path="res://scripts/splash.gd" id="1_vvsta"]
+[ext_resource type="Script" uid="uid://da3eqxojuibge" path="res://scripts/splash.gd" id="1_vvsta"]
 [ext_resource type="Texture2D" uid="uid://b0uf284m6yxlb" path="res://treedev_logo.png" id="2_0hv6s"]
 [ext_resource type="FontFile" uid="uid://dyxv40j2au36r" path="res://fonts/Daydream.ttf" id="3_owray"]
 
